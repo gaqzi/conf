@@ -6,3 +6,7 @@ for f in $FILES ; do
 		ln -s ${PWD}/${f} ~/.${f}
 	fi
 done
+
+if [ ! -d ~/tmp ] ; then
+	mkdir ~/tmp
+fi

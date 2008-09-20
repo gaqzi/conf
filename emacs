@@ -65,16 +65,19 @@
 (prefer-coding-system           'utf-8)
 
 ;; add all the elisp directories under ~/.emacs.d to my load path
-(labels ((add-path (p)
-		   (add-to-list 'load-path
-				(concat emacs-root p))))
-  (add-path ".emacs.d/personal")    ;; My own configuration and stuff
-  (add-path ".emacs.d/color-theme")
-  (add-path ".emacs.d/ruby")
-  (add-path ".emacs.d/snippet/")
-  (add-path ".emacs.d/testing")
-  (add-path ".emacs.d/modes")
-  )
+(defun ba-add-path (p)
+  (add-to-list 'load-path
+      (concat emacs-root p)))
+;(labels ((add-path (p)
+;		   (add-to-list 'load-path
+;				(concat emacs-root p))))
+(ba-add-path ".emacs.d/personal")    ;; My own configuration and stuff
+(ba-add-path ".emacs.d/color-theme")
+(ba-add-path ".emacs.d/ruby")
+(ba-add-path ".emacs.d/snippet/")
+(ba-add-path ".emacs.d/testing")
+(ba-add-path ".emacs.d/modes")
+;  )
 
 (load-library "modes") ;; configuration for modes
 
