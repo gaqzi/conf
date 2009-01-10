@@ -39,3 +39,9 @@
 (if (and (eq system-type 'darwin)
          (eq window-system 'mac))
     (set-frame-parameter nil 'alpha 95))
+
+;; Modes with their own subdirs go here
+(ba-add-path ".emacs.d/modes/git")
+
+;; And their requires
+(require 'git)
