@@ -40,6 +40,12 @@
          (eq window-system 'mac))
     (set-frame-parameter nil 'alpha 95))
 
+;; If we have a mouse make sure it's not in the way
+(mouse-avoidance-mode 'exile)
+
+;; Remove old buffers at midnight
+(set 'mightnight-mode t)
+
 ;; Modes with their own subdirs go here
 (ba-add-path ".emacs.d/modes/git")
 
