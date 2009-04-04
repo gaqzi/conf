@@ -1,3 +1,4 @@
+;; -*- emacs-lisp-mode -*-
 ;; The home directory
 (defvar emacs-root (if (eq system-type 'darwin)
                        "/Users/ba/"
@@ -67,15 +68,19 @@
 (set-selection-coding-system    'utf-8)
 (prefer-coding-system           'utf-8)
 
+;; So we use reasonably named buffers instead of afile<1>, afile<2>
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
 ;; add all the elisp directories under ~/.emacs.d to my load path
 (defun ba-add-path (p)
   (add-to-list 'load-path
       (concat emacs-root p)))
 (ba-add-path ".emacs.d/personal")    ;; My own configuration and stuff
 (ba-add-path ".emacs.d/color-theme")
-(ba-add-path ".emacs.d/ruby")
-(ba-add-path ".emacs.d/snippet/")
-(ba-add-path ".emacs.d/testing")
 (ba-add-path ".emacs.d/modes")
 
 (load-library "modes") ;; configuration for modes
