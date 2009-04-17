@@ -1,0 +1,20 @@
+#!/bin/sh
+
+URL="http://cell.sanitarium.se/~ba/tmp/"
+UPLOAD_HOST="cell.sanitarium.se:www/tmp/"
+#PREFIX=`date "+%Y-%m-%d_%H%M-"`
+PREFIX=''
+
+SHOW_URL='' # -f to print url on stdout
+
+# Name the remote file the second argument passed
+if [ "$2" != "" ] ; then
+    NAME=$2
+else
+    NAME=${PREFIX}`basename ${1}`
+fi
+scp $1 ${UPLOAD_HOST}${NAME}
+
+# Two calls because we want to set both middle mouseclick and CTRL+V
+echo "${URL}${NAME}" | xclip
+echo "${URL}${NAME}" | xclip $SHOW_URL -selection clipboard

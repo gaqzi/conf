@@ -1,5 +1,7 @@
 [core]
-	excludesfile = /Users/ba/.gitignore
+	excludesfile = /home/ba/.gitignore
+	name = Björn Andersson
+	email = ba@sanitarium.se
 [diff "ruby"]
 	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
 [color]
@@ -19,4 +21,3 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-

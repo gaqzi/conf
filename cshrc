@@ -13,19 +13,14 @@ alias lf	ls -FA
 alias ll	ls -lA
 alias ls	ls -G
 alias ssu	ssh ba@sanitarium.se
-alias sss	ssh ba@shell.sanitarium.se
-alias ssd	ssh gaqzi@debris.se
-alias ssa	ssh gaqzi@a.sanitarium.se
 alias ssc	ssh ba@cell.sanitarium.se
-alias ssl	ssh -l cyberia
 alias amplayer mplayer -aid 1 -sid 0
-alias breakpoin script/breakpointer --client-uri=druby://localhost:42532
-alias xlock xlock -program /usr/games/fortune -message "djuproera.lan.sanitarium.se" -mode marquee
+
 
 # A righteous umask
 umask 22
 
-set path = (/opt/local/bin /opt/local/sbin /usr/local/mysql-5.0.41-osx10.4-i686/bin/ /opt/local/lib/postgresql82/bin /sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin /usr/X11R6/bin $HOME/bin)
+set path = (/opt/local/bin /opt/local/sbin /usr/local/mysql-5.0.41-osx10.4-i686/bin/ /opt/local/lib/postgresql82/bin /sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin /usr/X11R6/bin /var/lib/gems/1.8/bin $HOME/bin)
 
 setenv	EDITOR	vim
 setenv	PAGER	less
@@ -36,6 +31,7 @@ setenv LC_CTYPE sv_SE.UTF-8
 	#	fn '-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1'"
 setenv TZ Europe/Stockholm
 #setenv LC_ALL sv_SE.ISO_8859-1
+setenv RSPEC true
 
 # WMII
 setenv WMII_SELCOLORS '#eeeeee #506070 #708090'
@@ -60,7 +56,7 @@ if ($?prompt) then
 	# An interactive shell -- set some stuff up
 	if ($TERM != "cons25" || $TERM != "dumb") then
 		set ellipsis set prompt='%{^[]0;%n@%m, %.03, %P, CODE=%?^G%}%B%n%b@%m: %.02%# '
-	else 
+	else
 		set prompt='%B%n%b@%m: %.02%# '
 	endif
 	set filec

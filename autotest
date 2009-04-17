@@ -1,6 +1,6 @@
-# -*- mode: ruby -*-
+# -*- ruby-mode -*-
 require 'autotest/redgreen'
-# require 'autotest/rspec'
+require 'autotest/emacs'
 
 if ENV['OSTYPE'] == 'darwin'
   module Autotest::Growl
