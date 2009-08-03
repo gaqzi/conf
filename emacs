@@ -1,3 +1,4 @@
+; -*- mode: emacs-lisp -*-
 ;; The home directory
 (defvar emacs-root (if (eq system-type 'darwin)
                        "/Users/ba/"
@@ -47,6 +48,11 @@
 (show-paren-mode t)
 ;; Automatic abbrevation expand!
 ;(setq default-abbrev-mode t)
+
+;; Put the path in buffer names, no more index.txt<2>!
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 
 ;; Save hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
