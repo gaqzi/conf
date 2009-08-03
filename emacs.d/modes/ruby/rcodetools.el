@@ -1,10 +1,10 @@
 ;;; rcodetools.el -- annotation / accurate completion / browsing documentation
 
-;;; Copyright (c) 2006-2008 rubikitch <rubikitch@ruby-lang.org>
+;;; Copyright (c) 2006 rubikitch <rubikitch@ruby-lang.org>
 ;;;
 ;;; Use and distribution subject to the terms of the Ruby license.
 
-(defvar xmpfilter-command-name "ruby -S xmpfilter --dev --fork --detect-rbtest"
+(defvar xmpfilter-command-name "ruby -S xmpfilter --dev --detect-rbtest"
   "The xmpfilter command name.")
 (defvar rct-doc-command-name "ruby -S rct-doc --dev --fork --detect-rbtest"
   "The rct-doc command name.")
@@ -12,7 +12,6 @@
   "The rct-complete command name.")
 (defvar ruby-toggle-file-command-name "ruby -S ruby-toggle-file"
   "The ruby-toggle-file command name.")
-(defvar rct-fork-command-name "ruby -S rct-fork")
 (defvar rct-option-history nil)                ;internal
 (defvar rct-option-local nil)     ;internal
 (make-variable-buffer-local 'rct-option-local)
@@ -29,7 +28,7 @@
       (insert "=>")
     ad-do-it))
 ;; To remove this advice.
-;; (progn (ad-disable-advice 'comment-dwim 'around 'rct-hack) (ad-update 'comment-dwim)) 
+;; (progn (ad-disable-advice 'comment-dwim 'around 'rct-hack) (ad-update 'comment-dwim))
 
 (defun rct-current-line ()
   "Return the vertical position of point..."
@@ -54,49 +53,28 @@
      (if current-prefix-arg
          (setq rct-option-local
                (read-from-minibuffer "rcodetools option: " option nil nil 'rct-option-history))
-       option))))  
+       option))))
 
-(defun rct-shell-command (command &optional buffer)
-  "Replacement for `(shell-command-on-region (point-min) (point-max) command buffer t' because of encoding problem."
-  (let ((input-rb (concat (make-temp-name "xmptmp-in") ".rb"))
-        (output-rb (concat (make-temp-name "xmptmp-out") ".rb"))
-        (coding-system-for-read buffer-file-coding-system))
-    (write-region (point-min) (point-max) input-rb nil 'nodisp)
-    (shell-command
-     (rct-debuglog (format "%s %s > %s" command input-rb output-rb))
-     t " *rct-error*")
-    (and buffer (set-buffer buffer))
-    (insert-file-contents output-rb nil nil nil t)
-    (delete-file input-rb)
-    (delete-file output-rb)))
-
-(defvar xmpfilter-command-function 'xmpfilter-command)
 (defun xmp (&optional option)
   "Run xmpfilter for annotation/test/spec on whole buffer.
 See also `rct-interactive'. "
   (interactive (rct-interactive))
   (rct-save-position
-   (lambda ()
-     (rct-shell-command (funcall xmpfilter-command-function option)))))
+   (lambda () (shell-command-on-region (point-min) (point-max) (xmpfilter-command option) t t " *rct-error*"))))
 
 (defun xmpfilter-command (&optional option)
   "The xmpfilter command line, DWIM."
   (setq option (or option ""))
-  (flet ((in-block (beg-re)
-                   (save-excursion
-                     (goto-char (point-min))
-                     (when (re-search-forward beg-re nil t)
-                       (let ((s (point)) e)
-                         (when (re-search-forward "^end\n" nil t)
-                           (setq e (point))
-                           (goto-char s)
-                           (re-search-forward "# => *$" e t)))))))
-    (cond ((in-block "^class.+< Test::Unit::TestCase$")
-           (format "%s --unittest %s" xmpfilter-command-name option))
-          ((in-block "^\\(describe\\|context\\).+do$")
-           (format "%s --spec %s" xmpfilter-command-name option))
-          (t
-           (format "%s %s" xmpfilter-command-name option)))))
+  (cond ((save-excursion
+           (goto-char 1)
+           (search-forward "< Test::Unit::TestCase" nil t))
+         (format "%s --unittest %s" xmpfilter-command-name option))
+        ((save-excursion
+           (goto-char 1)
+           (re-search-forward "^\(context|describe\).+do$" nil t))
+         (format "%s --spec %s" xmpfilter-command-name option))
+        (t
+         (format "%s %s" xmpfilter-command-name option))))
 
 ;;;; Completion
 (defvar rct-method-completion-table nil) ;internal
@@ -152,12 +130,13 @@ See also `rct-interactive'."
   "Execute rct-complete/rct-doc and evaluate the output."
   (let ((eval-buffer  (get-buffer-create " *rct-eval*")))
     ;; copy to temporary buffer to do completion at non-EOL.
-    (rct-shell-command
-     (format "%s %s %s --line=%d --column=%d %s"
-             command opt (or rct-option-local "")
-             (rct-current-line) (current-column)
-             (if rct-use-test-script (rct-test-script-option-string) ""))
-     eval-buffer)
+    (shell-command-on-region
+     (point-min) (point-max)
+     (rct-debuglog (format "%s %s %s --line=%d --column=%d %s"
+                           command opt (or rct-option-local "")
+                           (rct-current-line) (current-column)
+                           (if rct-use-test-script (rct-test-script-option-string) "")))
+     eval-buffer nil " *rct-error*")
     (message "")
     (eval (with-current-buffer eval-buffer
             (goto-char 1)
@@ -234,177 +213,5 @@ See also `rct-interactive'. "
   (find-file (shell-command-to-string
               (format "%s %s" ruby-toggle-file-command-name buffer-file-name))))
 
-;;;; rct-fork support
-(defun rct-fork (options)
-  "Run rct-fork.
-Rct-fork makes xmpfilter and completion MUCH FASTER because it pre-loads heavy libraries.
-When rct-fork is running, the mode-line indicates it to avoid unnecessary run.
-To kill rct-fork process, use \\[rct-fork-kill].
-"
-  (interactive "srct-fork options (-e CODE -I LIBDIR -r LIB): ")
-  (rct-fork-kill)
-  (rct-fork-minor-mode 1)
-  (start-process-shell-command
-   "rct-fork" "*rct-fork*" rct-fork-command-name options))
-(defun rct-fork-kill ()
-  "Kill rct-fork process invoked by \\[rct-fork]."
-  (interactive)
-  (when rct-fork-minor-mode
-    (rct-fork-minor-mode -1)
-    (interrupt-process "rct-fork")))
-(define-minor-mode rct-fork-minor-mode
-  "This minor mode is turned on when rct-fork is run.
-It is nothing but an indicator."
-  :lighter " <rct-fork>" :global t)
-
-;;;; unit tests
-(when (and (fboundp 'expectations))
-  (require 'ruby-mode)
-  (require 'el-mock nil t)
-  (expectations
-    (desc "comment-dwim advice")
-    (expect "# =>"
-      (with-temp-buffer
-        (ruby-mode)
-        (setq last-command nil)
-        (call-interactively 'comment-dwim)
-        (setq last-command 'comment-dwim)
-        (call-interactively 'comment-dwim)
-        (buffer-string)))
-    (expect (regexp "^1 +# =>")
-      (with-temp-buffer
-        (ruby-mode)
-        (insert "1")
-        (setq last-command nil)
-        (call-interactively 'comment-dwim)
-        (setq last-command 'comment-dwim)
-        (call-interactively 'comment-dwim)
-        (buffer-string)))
-
-    (desc "rct-current-line")
-    (expect 1
-      (with-temp-buffer
-        (rct-current-line)))
-    (expect 1
-      (with-temp-buffer
-        (insert "1")
-        (rct-current-line)))
-    (expect 2
-      (with-temp-buffer
-        (insert "1\n")
-        (rct-current-line)))
-    (expect 2
-      (with-temp-buffer
-        (insert "1\n2")
-        (rct-current-line)))
-
-    (desc "rct-save-position")
-    (expect (mock (set-window-start * 7) => nil)
-      (stub window-start => 7)
-      (with-temp-buffer
-        (insert "abcdef\nghi")
-        (rct-save-position #'ignore)))
-    (expect 2
-      (with-temp-buffer
-        (stub window-start => 1)
-        (stub set-window-start => nil)
-        (insert "abcdef\nghi")
-        (rct-save-position #'ignore)
-        (rct-current-line)))
-    (expect 3
-      (with-temp-buffer
-        (stub window-start => 1)
-        (stub set-window-start => nil)
-        (insert "abcdef\nghi")
-        (rct-save-position #'ignore)
-        (current-column)))
-
-    (desc "rct-interactive")
-    (expect '("read")
-      (let ((current-prefix-arg t))
-        (stub read-from-minibuffer => "read")
-        (rct-interactive)))
-    (expect '("-S ruby19")
-      (let ((current-prefix-arg nil)
-            (rct-option-local "-S ruby19"))
-        (stub read-from-minibuffer => "read")
-        (rct-interactive)))
-    (expect '("")
-      (let ((current-prefix-arg nil)
-            (rct-option-local))
-        (stub read-from-minibuffer => "read")
-        (rct-interactive)))
-
-    (desc "rct-shell-command")
-    (expect "1+1 # => 2\n"
-      (with-temp-buffer
-        (insert "1+1 # =>\n")
-        (rct-shell-command "xmpfilter")
-        (buffer-string)))
-
-    (desc "xmp")
-
-    (desc "xmpfilter-command")
-    (expect "xmpfilter --rails"
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "class TestFoo < Test::Unit::TestCase\n")
-          (xmpfilter-command "--rails"))))
-    (expect "xmpfilter "
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "context 'foo' do\n")
-          (xmpfilter-command))))
-    (expect "xmpfilter "
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "describe Array do\n")
-          (xmpfilter-command))))
-    (expect "xmpfilter --unittest --rails"
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "class TestFoo < Test::Unit::TestCase\n"
-                  "  def test_0\n"
-                  "    1 + 1 # =>\n"
-                  "  end\n"
-                  "end\n")
-          (xmpfilter-command "--rails"))))
-    (expect "xmpfilter --spec "
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "context 'foo' do\n"
-                  "  specify \"foo\" do\n"
-                  "    1 + 1 # =>\n"
-                  "  end\n"
-                  "end\n")
-          (xmpfilter-command))))
-    (expect "xmpfilter --spec "
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "describe Array do\n"
-                  "  it \"foo\" do\n"
-                  "    [1] + [1] # =>\n"
-                  "  end\n"
-                  "end\n")
-          (xmpfilter-command))))
-    (expect "xmpfilter "
-      (let ((xmpfilter-command-name "xmpfilter"))
-        (with-temp-buffer
-          (insert "1 + 2\n")
-          (xmpfilter-command))))
-
-    (desc "rct-fork")
-    (expect t
-      (stub start-process-shell-command => t)
-      (stub interrupt-process => t)
-      (rct-fork "-r activesupport")
-      rct-fork-minor-mode)
-    (expect nil
-      (stub start-process-shell-command => t)
-      (stub interrupt-process => t)
-      (rct-fork "-r activesupport")
-      (rct-fork-kill)
-      rct-fork-minor-mode)
-    ))
 
 (provide 'rcodetools)

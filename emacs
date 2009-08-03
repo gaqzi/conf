@@ -1,4 +1,3 @@
-;; -*- emacs-lisp-mode -*-
 ;; The home directory
 (defvar emacs-root (if (eq system-type 'darwin)
                        "/Users/ba/"
@@ -39,18 +38,15 @@
 (setq kept-new-versions 6)
 (setq kept-old-versions 2)
 (setq version-control t)
-(setq indent-tabs-mode nil) ; I indent with space these days
+(setq indent-tabs-mode nil)
+;; No startup message
 (setq inhibit-startup-message t)
 ;; Comment empty lines when commenting a region
 (setq comment-empty-lines t)
+;; Show matching parens
 (show-paren-mode t)
-(setq transient-mark-mode nil) ; I like the normal mark!
-(setq custom-file "~/.emacs.d/personal/custom.el")
-(load custom-file 'noerror)
-
 ;; Automatic abbrevation expand!
 ;(setq default-abbrev-mode t)
-
 
 ;; Save hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -68,29 +64,32 @@
 (set-selection-coding-system    'utf-8)
 (prefer-coding-system           'utf-8)
 
-;; So we use reasonably named buffers instead of afile<1>, afile<2>
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator "/")
-(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
-
 ;; add all the elisp directories under ~/.emacs.d to my load path
-(defun ba-add-path (p)
-  (add-to-list 'load-path
-      (concat emacs-root p)))
-(ba-add-path ".emacs.d/personal")    ;; My own configuration and stuff
-(ba-add-path ".emacs.d/color-theme")
-(ba-add-path ".emacs.d/modes")
+(labels ((add-path (p)
+		   (add-to-list 'load-path
+				(concat emacs-root p))))
+  (add-path ".emacs.d/personal")    ;; My own configuration and stuff
+  (add-path ".emacs.d/color-theme")
+  (add-path ".emacs.d/snippet/")
+  (add-path ".emacs.d/testing")
+  (add-path ".emacs.d/modes")
+  (add-path ".emacs.d/modes/ruby")
+  )
 
 (load-library "modes") ;; configuration for modes
 
 ;; Make it nice with a custom color-theme!
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-ld-dark)
-;; (color-theme-charcoal-black)
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-ld-dark)
 
 (setq Info-directory-list (append '("~/.emacs.d/info")
 				  Info-default-directory-list))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(autotest-use-ui t))
 
