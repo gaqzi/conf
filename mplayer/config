@@ -1,6 +1,14 @@
-[default]
 # Write your default config options here!
-subfont-text-scale=3
-slang=en
 
+#Subtitle options
+slang=en,eng,
+subpos=100
+subalign=2
+subfont-autoscale=2
+ffactor="10"
+sub-bg-alpha="0"
+sub-bg-color="0"
+subfont-text-scale="3.0" # "3"
+subfont-blur="1"
 
+# ontop="1"
