@@ -41,12 +41,12 @@ setenv WMII_FONT '-artwiz-snap.de-*-*-*-*-*-*-*-*-*-*-*-*'
 # Some sane defauls for different systems
 # Always show colors with ls and use cyan for folders
 #  http://mipsisrisc.com/ - lscolors generator
-if($OSTYPE != "bsd") then
-	setenv LS_COLORS 'di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
-	alias ls ls --color=always
-else
+if($OSTYPE == "bsd" || $OSTYPE == "darwin") then
 	setenv LSCOLORS gxfxcxdxbxegedabagacad
 	alias ls ls -G
+else
+	setenv LS_COLORS 'di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+	alias ls ls --color=always
 endif
 
 limit coredumpsize 0
