@@ -1,5 +1,6 @@
 [core]
 	excludesfile = /home/ba/.gitignore
+[user]
 	name = Björn Andersson
 	email = ba@sanitarium.se
 [diff "ruby"]

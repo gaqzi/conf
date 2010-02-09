@@ -1,5 +1,0 @@
-#name : /usr/bin/env ruby -wKU
-# --
-#!/usr/bin/env ruby -w
-# -*- coding: utf-8 -*-
-$KCODE = 'u'

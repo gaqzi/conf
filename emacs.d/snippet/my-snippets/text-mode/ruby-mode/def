@@ -1,5 +1,0 @@
-#name : def ... end
-# --
-def ${Name}
-  $0
-end
