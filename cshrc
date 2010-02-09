@@ -16,11 +16,10 @@ alias ssu	ssh ba@sanitarium.se
 alias ssc	ssh ba@cell.sanitarium.se
 alias amplayer mplayer -aid 1 -sid 0
 
-
 # A righteous umask
 umask 22
 
-set path = (/opt/local/bin /opt/local/sbin /usr/local/mysql-5.0.41-osx10.4-i686/bin/ /opt/local/lib/postgresql82/bin /sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin /usr/X11R6/bin /var/lib/gems/1.8/bin $HOME/bin)
+set path = (/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin /opt/local/bin /opt/local/sbin /usr/local/mysql-5.0.41-osx10.4-i686/bin/ /Library/PostgreSQL/8.4/bin /sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin /usr/X11R6/bin /var/lib/gems/1.8/bin $HOME/bin)
 
 setenv	EDITOR	vim
 setenv	PAGER	less
