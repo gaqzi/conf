@@ -1,5 +1,7 @@
 ! xrdb -load .Xdefaults
 
+xterm*background: black
+xterm*foreground: lightgray
 urxvt.background: black
 urxvt.foreground: lightgray
 ! urxvt*font: xft:Bitstream Vera Sans:pixelsize=10
@@ -9,12 +11,16 @@ urxvt.saveLines: 3000
 urxvt.perl-ext-common: default, matcher
 urxvt.urlLauncher: firefox
 urxvt.matcher*button: 1
-! Emacs.font: Monospace-10
+urxvt.cutchars: "`\"()'*<>[]{|}"
+! Emacs.font: Monospace-10:antialias=False
 ! Lucida Sans Typewriter-10
-! Emacs.font: bitstream vera sans mono-10
-! Emacs.font: fixed
-Emacs.FontBackend: xft
-Emacs.font: Dejavu Sans Mono-8
+!Emacs.font: bitstream vera sans mono-9:antialias=False
+! Emacs.font: fixed-10
+! Emacs.FontBackend: xft
+! Emacs.font: Liberation Mono-8
+! Xft.embolden: true
+! Emacs.font: Dejavu Sans Mono-8
 
 ! Makes sure that alt is meta in xterm
 xterm*metaSendsEscape:   true
+
