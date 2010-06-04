@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8; mode: ruby -*-
+$VERBOSE = true
+$KCODE = 'u'
+
+if ARGV.empty?
+  STDERR.puts 'Need at least one file to download'
+  exit 1
+end
+
+def exist_rename(local, num = 2)
+  if File.exists?(local)
+    STDERR.puts "File exists: #{local}. Automatic renaming..."
+    local = local.split('.')
+    local[-2] += "-#{num}"
+    local = local.join('.')
+
+    return exist_rename(local, num + 1)
+  else
+    return local
+  end
+end
+
+url, local = ARGV
+
+if local
+  local = exist_rename(local)
+else
+  local = exist_rename(File.basename(url))
+end
+
+output=`wget '#{url}' -O '#{local}' 2>&1`
+if $?.exitstatus != 0
+  STDERR.puts 'A problem occurred downloading'
+  STDERR.puts "Message: '#{output}'"
+  exit 2
+else
+  puts local
+end
