@@ -1,0 +1,58 @@
+! xrdb -load .Xdefaults
+
+! Makes sure that alt is meta in xterm
+xterm*metaSendsEscape:   true
+
+! xterm colors and fonts
+xterm*background: black
+xterm*foreground: lightgray
+xterm*boldFont: fixed
+xterm*font: fixed
+
+! urxvt configuration
+urxvt.scrollBar: false
+urxvt.saveLines: 3000
+urxvt.perl-ext-common: default,matcher
+urxvt.urlLauncher: firefox
+urxvt.matcher*button: 1
+urxvt.cutchars: "`\"()'*<>[]{|}"
+
+urxvt*background: black
+urxvt*foreground: lightgray
+urxvt*font: fixed
+urxvt*boldFont: fixed
+urxvt*boldMode: false
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
+urxvt*color0:    #000000
+urxvt*color1:    #cd0000
+urxvt*color2:    #00cd00
+urxvt*color3:    #cdcd00
+urxvt*color4:    #0000ee
+urxvt*color5:    #cd00cd
+urxvt*color6:    #00cdcd
+urxvt*color7:    #e5e5e5
+! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
+urxvt*color8:    #7f7f7f
+urxvt*color9:    #ff0000
+urxvt*color10:    #00ff00
+urxvt*color11:    #ffff00
+urxvt*color12:    #5c5cff
+urxvt*color13:    #ff00ff
+urxvt*color14:    #00ffff
+urxvt*color15:    #ffffff

@@ -1,1 +1,2 @@
-gtk-key-theme-name = “Emacs”
+include "/home/ba/code/conf/gtk/Clearlooks-Compact/gtk-2.0"
+gtk-key-theme-name = "Emacs"
