@@ -15,6 +15,10 @@ else
 fi
 scp $1 ${UPLOAD_HOST}${NAME}
 
-# Two calls because we want to set both middle mouseclick and CTRL+V
-echo "${URL}${NAME}" | xclip
-echo "${URL}${NAME}" | xclip $SHOW_URL -selection clipboard
+if [ $OSTYPE = 'darwin' ] ; then
+    echo "${URL}${NAME}" | pbcopy
+else
+    # Two calls because we want to set both middle mouseclick and CTRL+V
+    echo "${URL}${NAME}" | xclip
+    echo "${URL}${NAME}" | xclip $SHOW_URL -selection clipboard
+fi
