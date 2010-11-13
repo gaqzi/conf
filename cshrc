@@ -39,7 +39,7 @@ setenv WMII_FONT '-artwiz-snap.de-*-*-*-*-*-*-*-*-*-*-*-*'
 
 # Some sane defauls for different systems
 # Always show colors with ls and use cyan for folders
-#  http://mipsisrisc.com/ - lscolors generator
+#  http://geoff.greer.fm/lscolors/
 if($OSTYPE == "bsd" || $OSTYPE == "darwin") then
 	setenv LSCOLORS gxfxcxdxbxegedabagacad
 	alias ls ls -G

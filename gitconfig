@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /home/ba/.gitignore
+	excludesfile = ~/.gitignore
 [user]
 	name = Björn Andersson
 	email = ba@sanitarium.se
