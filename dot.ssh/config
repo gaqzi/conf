@@ -1,0 +1,7 @@
+# Verify host fingerprints with the value in DNS, if any
+VerifyHostKeyDNS yes
+
+Host github-ba
+     Hostname github.com
+     User git
+     IdentityFile /Users/ba/.ssh/ba-github
