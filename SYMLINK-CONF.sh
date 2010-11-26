@@ -3,7 +3,6 @@
 cd `dirname $0`
 
 FILES=`ls`
-FILES=''
 for f in $FILES ; do
 	for g in SYMLINK-CONF.sh dot.ssh ; do
 		if [[ $f == $g ]] ; then
