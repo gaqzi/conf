@@ -1,2 +1,2 @@
-include "/home/ba/code/conf/gtk/Clearlooks-Compact/gtk-2.0"
+include "/home/ba/code/conf/gtk/Clearlooks-Compact/gtk-2.0/gtkrc"
 gtk-key-theme-name = "Emacs"
