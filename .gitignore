@@ -1,0 +1,4 @@
+dot.ssh/*
+!dot.ssh/config
+dot.xmonad/*
+!dot.xmonad/xmonad.hs
