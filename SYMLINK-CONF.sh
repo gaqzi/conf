@@ -16,9 +16,9 @@ for f in $FILES ; do
 	# Directories that start with dot.<dirname> should be named .<dirname>
 	elif [ -d $f ] ; then
 		if [[ "${f}" =~ "dot." ]] ; then
-			ln -s -i "${PWD}/${f} ~/.`echo $f | sed s/dot\.//`"
+			ln -s -i "${PWD}/${f}" "~/.`echo $f | sed s/dot\.//`"
 		else
-			ln -s -i "${PWD}/${f} ~/${f}"
+			ln -s -i "${PWD}/${f}" "~/${f}"
 		fi
 	fi
 done

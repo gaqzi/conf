@@ -2,3 +2,5 @@ dot.ssh/*
 !dot.ssh/config
 dot.xmonad/*
 !dot.xmonad/xmonad.hs
+!dot.xmonad/hooks
+!dot.xmonad/xmonad-gnome.hs
