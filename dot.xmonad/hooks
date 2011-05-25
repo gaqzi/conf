@@ -5,9 +5,10 @@ xsetroot -solid black &
 if [ -z "`ps -Af | grep -o -w ".*trayer" | grep -v grep | grep -v run-once`" ]; then
     trayer --edge top --align right --SetDockType true --SetPartialStrut true \
         --expand true --width 10 --transparent true --tint 0x000000 --alpha 0 --height 12 &
-fi
 
-run-once nm-applet
-run-once gnome-power-manager
-run-once bluetooth-applet
-run-once gnome-volume-control-applet
+    run-once nm-applet &
+    run-once gnome-power-manager &
+    run-once bluetooth-applet &
+    run-once gnome-volume-control-applet &
+    /usr/bin/xflux -l 62.38 -g 17.3 -k 4100 > /dev/null &
+fi
