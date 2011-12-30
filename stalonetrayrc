@@ -1,0 +1,8 @@
+background black
+geometry 1x1-0+0
+grow_gravity N
+icon_gravity N
+icon_size 16
+transparent true
+#vertical
+dockapp_mode simple
