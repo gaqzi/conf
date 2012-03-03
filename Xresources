@@ -56,3 +56,51 @@ urxvt*color12:    #5c5cff
 urxvt*color13:    #ff00ff
 urxvt*color14:    #00ffff
 urxvt*color15:    #ffffff
+
+! urxvt/x-terminal-emulator configuration
+x-terminal-emulator.scrollBar: false
+x-terminal-emulator.saveLines: 3000
+x-terminal-emulator.perl-ext-common: default,matcher
+x-terminal-emulator.urlLauncher: chromium-browser
+x-terminal-emulator.matcher*button: 1
+x-terminal-emulator.cutchars: "`\"()'*<>[]{|}"
+
+x-terminal-emulator*background: black
+x-terminal-emulator*foreground: lightgray
+x-terminal-emulator*font: fixed
+x-terminal-emulator*boldFont: fixed
+x-terminal-emulator*boldMode: false
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
+x-terminal-emulator*color0:    #000000
+x-terminal-emulator*color1:    #cd0000
+x-terminal-emulator*color2:    #00cd00
+x-terminal-emulator*color3:    #cdcd00
+x-terminal-emulator*color4:    #0000ee
+x-terminal-emulator*color5:    #cd00cd
+x-terminal-emulator*color6:    #00cdcd
+x-terminal-emulator*color7:    #e5e5e5
+! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
+x-terminal-emulator*color8:    #7f7f7f
+x-terminal-emulator*color9:    #ff0000
+x-terminal-emulator*color10:    #00ff00
+x-terminal-emulator*color11:    #ffff00
+x-terminal-emulator*color12:    #5c5cff
+x-terminal-emulator*color13:    #ff00ff
+x-terminal-emulator*color14:    #00ffff
+x-terminal-emulator*color15:    #ffffff

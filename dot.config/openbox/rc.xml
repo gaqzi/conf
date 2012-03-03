@@ -250,7 +250,7 @@
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="A-space">
+    <keybind key="C-A-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
@@ -274,6 +274,11 @@
         <execute>urxvt</execute>
       </action>
     </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <execute>dmenu_run</execute>
+      </action>
+    </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <execute>amixer sset Master 1+</execute>
@@ -284,11 +289,11 @@
         <execute>amixer sset Master 1-</execute>
       </action>
     </keybind>
-    <keybind key="XF86AudioMute">
+<!--    <keybind key="XF86AudioMute">
       <action name="Execute">
         <execute>amixer sset Master 0</execute>
       </action>
-    </keybind>
+    </keybind> -->
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
@@ -674,7 +679,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>

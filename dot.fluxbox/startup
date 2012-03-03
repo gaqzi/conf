@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "/home/ba/.Xmodmap"
+
+# No beep for you!
+xset b off
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+nm-applet &
+xfce4-power-manager &
+xsetroot -solid black &
+/usr/bin/xflux -l 62.38 -g 17.3 -k 4100 &
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/ba/.fluxbox/log"
