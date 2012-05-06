@@ -63,6 +63,9 @@ Mod1 F1 :Exec x-terminal-emulator
 # open a dialog to run programs
 Mod1 F2 :Exec fbrun -fg white -bg black
 
+# Lock
+Mod4 l :Exec  gnome-screensaver-command --lock
+
 # volume settings, using common keycodes
 # if these don't work, use xev to find out your real keycodes
 XF86AudioRaiseVolume :Exec amixer sset Master,0 1+

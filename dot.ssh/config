@@ -5,3 +5,16 @@ Host github-ba
      Hostname github.com
      User git
      IdentityFile /Users/ba/.ssh/ba-github
+Host=popgun.github.com
+Hostname=github.com
+Host=mediapop.github.com
+Hostname=github.com
+
+Host battleship-01
+    Hostname ec2-175-41-180-45.ap-southeast-1.compute.amazonaws.com
+Host battleship-02
+    Hostname ec2-46-137-192-95.ap-southeast-1.compute.amazonaws.com
+Host gnossem-staging
+    Hostname ec2-175-41-163-178.ap-southeast-1.compute.amazonaws.com
+Host gnossem-production
+    Hostname ec2-122-248-229-128.ap-southeast-1.compute.amazonaws.com
