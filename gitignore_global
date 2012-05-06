@@ -2,3 +2,5 @@
 *.elc
 \#.*\#
 *~
+*.pyc
+.sass-cache
