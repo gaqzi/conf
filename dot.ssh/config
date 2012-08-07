@@ -15,6 +15,22 @@ Host battleship-01
 Host battleship-02
     Hostname ec2-46-137-192-95.ap-southeast-1.compute.amazonaws.com
 Host gnossem-staging
-    Hostname ec2-175-41-163-178.ap-southeast-1.compute.amazonaws.com
+    Hostname ec2-46-137-198-63.ap-southeast-1.compute.amazonaws.com
 Host gnossem-production
-    Hostname ec2-122-248-229-128.ap-southeast-1.compute.amazonaws.com
+    Hostname ec2-46-137-193-107.ap-southeast-1.compute.amazonaws.com
+Host gnossem-dev
+    Hostname ec2-122-248-226-41.ap-southeast-1.compute.amazonaws.com
+Host dev-ba.mediapop.co
+    Hostname dev-ba.mediapop.co
+    RemoteForward 8010 localhost:9999
+Host spreader-backend-01
+    Hostname ec2-54-251-13-228.ap-southeast-1.compute.amazonaws.com
+    User ubuntu
+Host staging.mediapop.co
+    Hostname 175.41.151.108
+    User bjorn
+Host taskermania
+    Hostname 46.38.162.97
+    User root
+Host gamesite
+    Hostname ec2-175-41-171-58.ap-southeast-1.compute.amazonaws.com

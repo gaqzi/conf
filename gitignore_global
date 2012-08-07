@@ -1,6 +1,11 @@
-.DS_Store
-*.elc
-\#.*\#
+# Emacs files
+*#
 *~
-*.pyc
+*.elc
+
+# Python files
+*.py[co]
+
+.DS_Store
 .sass-cache
+.dropbox
