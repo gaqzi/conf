@@ -7,7 +7,6 @@ filetype on
 filetype indent on
 filetype plugin on
 :color desert
-let g:rails_level=4
 " backspace at beginning of line takes you to the previous line
 set backspace=2
 " i tend to mess up - keep backups!
@@ -64,7 +63,7 @@ set gdefault
 set ttyfast
 " set these two if you don't like tabs and want to autoconvert
 " them to spaces (edit file type)
-"set et
+set et
 " retab (perl, shell, python, php and ruby script) files with
 " tabstops longer than 4 spaces, very nifty
 au BufRead *.pl,*.sh,*.py,*.php,*.rb %retab
@@ -72,4 +71,3 @@ au BufRead *.pl,*.sh,*.py,*.php,*.rb %retab
 map q :q<CR>
 " write a changelog entry
 " map <F7> :i Björn Andersson <ba@sanitarium.se> (c) 2006 * |
-autocmd FileType ruby,eruby call UseRubyIndent()
