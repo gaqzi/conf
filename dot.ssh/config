@@ -20,39 +20,10 @@ Hostname=github.com
 Host lurcher.kfib.org
     Port 24
 
-Host battleship-01
-    Hostname ec2-175-41-180-45.ap-southeast-1.compute.amazonaws.com
-Host battleship-02
-    Hostname ec2-46-137-192-95.ap-southeast-1.compute.amazonaws.com
-Host gnossem-staging-old
-    Hostname ec2-46-137-200-223.ap-southeast-1.compute.amazonaws.com
-Host gnossem-staging
-    Hostname gnossem-staging.mediapop.co
-Host gnossem-production
-    Hostname ec2-54-251-16-29.ap-southeast-1.compute.amazonaws.com
-Host gnossem-dev
-    Hostname ec2-122-248-226-41.ap-southeast-1.compute.amazonaws.com
-Host gnossem-local-dev
-    Hostname 127.0.0.1
-    Port 2222
-    User ubuntu
 Host dev-ba.mediapop.co
     Hostname dev-ba.mediapop.co
     RemoteForward 8010 localhost:9999
-Host spreader-backend-01
-    Hostname ec2-54-251-13-228.ap-southeast-1.compute.amazonaws.com
-    User ubuntu
-Host spreader-backend-prod
-    Hostname ec2-46-137-197-224.ap-southeast-1.compute.amazonaws.com
-    User ubuntu
 Host staging.mediapop.co
-    Hostname 175.41.151.108
-Host taskermania
-    Hostname 46.38.162.97
-    User root
-Host gamesite
-    Hostname ec2-175-41-171-58.ap-southeast-1.compute.amazonaws.com
-Host mp-staging
     Hostname 175.41.151.108
 Host awsg.mediapop.co
     Hostname ec2-54-251-13-85.ap-southeast-1.compute.amazonaws.com
@@ -64,6 +35,3 @@ Host upgrade.sg
 Host npcec
     Hostname upgrade.sg
     User upgrade
-Host gamesite-proxy-tw
-    Hostname 124.150.130.94
-    User cogini
