@@ -1,20 +1,23 @@
-# Verify host fingerprints with the value in DNS, if any
-VerifyHostKeyDNS yes
+Host *
+    VerifyHostKeyDNS yes
+    ServerAliveInterval 300
+    ServerAliveCountMax 2
 
 Host github-ba
-     Hostname github.com
-     User git
-     IdentityFile /Users/ba/.ssh/ba-github
-Host=popgun.github.com
-Hostname=github.com
-Host=mediapop.github.com
-Hostname=github.com
-Host=friendface.github.com
-Hostname=github.com
-Host=slowstagram.github.com
-Hostname=github.com
-Host=pixma.github.com
-Hostname=github.com
+    Hostname github.com
+    User git
+    IdentityFile /Users/ba/.ssh/ba-github
+
+Host popgun.github.com
+    Hostname github.com
+Host mediapop.github.com
+    Hostname github.com
+Host friendface.github.com
+    Hostname github.com
+Host slowstagram.github.com
+    Hostname github.com
+Host pixma.github.com
+    Hostname github.com
 
 # q dev host
 Host lurcher.kfib.org
@@ -23,8 +26,10 @@ Host lurcher.kfib.org
 Host dev-ba.mediapop.co
     Hostname dev-ba.mediapop.co
     RemoteForward 8010 localhost:9999
+
 Host staging.mediapop.co
     Hostname 175.41.151.108
+
 Host awsg.mediapop.co
     Hostname ec2-54-251-13-85.ap-southeast-1.compute.amazonaws.com
     User ubuntu
