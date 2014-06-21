@@ -6,3 +6,9 @@ dot.xmonad/*
 !dot.xmonad/xmonad-gnome.hs
 dot.pip/*
 !dot.pip/pip.conf
+
+dot.virtualenvs/*
+!dot.virtualenvs/pre*
+!dot.virtualenvs/post*
+!dot.virtualenvs/get_env_details
+!dot.virtualenvs/initialize
