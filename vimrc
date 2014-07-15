@@ -69,5 +69,5 @@ set et
 au BufRead *.pl,*.sh,*.py,*.php,*.rb %retab
 " quit with a single keypress ('q')
 map q :q<CR>
-" write a changelog entry
-" map <F7> :i Björn Andersson <ba@sanitarium.se> (c) 2006 * |
+" Add underscore (_) as a word character
+:set iskeyword-=_ 
