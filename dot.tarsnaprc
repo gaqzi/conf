@@ -1,0 +1,5 @@
+exclude node_modules
+exclude tmp
+exclude .vagrant
+exclude dot.virtualenvs
+exclude *.pyc

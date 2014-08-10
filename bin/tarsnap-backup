@@ -1,0 +1,13 @@
+#!/bin/bash
+
+BACKUP_DIR=$HOME/backups
+CACHE_DIR="$BACKUP_DIR/.cache"
+KEYFILE="$BACKUP_DIR/.tarsnap.key"
+FILENAME="$BACKUP_DIR/$(date '+%Y-%m-%dT%H%M')"
+
+mkdir -p $BACKUP_DIR
+
+tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
+    -f $FILENAME \
+#    --aggressive-networking \
+    $HOME/code $HOME/Development

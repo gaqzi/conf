@@ -1,7 +1,11 @@
 Host *
-    VerifyHostKeyDNS yes
-    ServerAliveInterval 300
-    ServerAliveCountMax 2
+    identityfile ~/.ssh/id_dsa
+    identityfile ~/.ssh/mediapop.rsa
+    verifyhostkeydns yes
+    ControlMaster auto
+    ControlPersist 3600
+    ServerAliveInterval 600
+    ControlPath ~/tmp/ssh-%r@%h:%p
 
 Host github-ba
     Hostname github.com
