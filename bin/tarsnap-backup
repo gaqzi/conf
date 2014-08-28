@@ -9,5 +9,5 @@ mkdir -p $BACKUP_DIR
 
 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     -f $FILENAME \
-#    --aggressive-networking \
     $HOME/code $HOME/Development
+#    --aggressive-networking \
