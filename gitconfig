@@ -3,8 +3,6 @@
 [user]
 	name = Björn Andersson
 	email = ba@sanitarium.se
-[diff "ruby"]
-	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
 [color]
 	branch = auto
 	diff = auto
