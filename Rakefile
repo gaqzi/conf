@@ -38,8 +38,9 @@ task :symlink_all_the_things => [:symlink_ssh_folder, :create_tmp_folder] do
       if File.file? full_path
         ln_s(full_path, File.join(ENV['HOME'], ".#{file}"))
       elsif File.directory? full_path
-        ln_s(full_path,
-                File.join(ENV['HOME'], file.sub(/^dot/, '')))
+        symlink_name = File.join(ENV['HOME'], file.sub(/^dot/, ''))
+        next if File.symlink? symlink_name
+        ln_s(full_path, symlink_name)
       else
         puts ' => skipping, unknown file'
       end
