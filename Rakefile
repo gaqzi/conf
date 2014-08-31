@@ -1,9 +1,10 @@
 # All files will be matched against this array, if the file starts the same
 # then it's ignored for automatic processing
-IGNORE_FOR_SYMLINK = %w[SYMLINK-CONF.sh dot.ssh vim-config vimrc emacs.d]
+IGNORE_FOR_SYMLINK = %w[SYMLINK-CONF.sh dot.ssh vim-config vimrc emacs.d zshrc]
 
 desc 'Check out submodules and symlink all configuration files'
-task :default => [:setup_vim, :setup_emacs, :symlink_all_the_things]
+task :default => [:setup_vim, :setup_emacs, :setup_zsh,
+                  :symlink_all_the_things]
 
 desc 'Check out git submodules'
 task :checkout_submodules do
@@ -31,7 +32,12 @@ end
 
 desc 'Setup emacs configuration'
 task :setup_emacs => [:checkout_submodules] do
-  sh "emacs.d/setup.sh"
+  sh 'emacs.d/setup.sh'
+end
+
+desc 'Setup zsh configuration'
+task :setup_zsh => [:checkout_submodules] do
+  sh 'zshrc/setup.sh'
 end
 
 task :symlink_all_the_things => [:symlink_ssh_folder, :create_tmp_folder] do

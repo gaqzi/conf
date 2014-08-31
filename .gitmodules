@@ -4,3 +4,6 @@
 [submodule "emacs.d"]
 	path = emacs.d
 	url = git@github.com:gaqzi/emacs.d
+[submodule "zshrc"]
+	path = zshrc
+	url = git@github.com:gaqzi/zshrc
