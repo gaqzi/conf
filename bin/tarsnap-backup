@@ -6,8 +6,9 @@ KEYFILE="$BACKUP_DIR/.tarsnap.key"
 FILENAME="$BACKUP_DIR/$(date '+%Y-%m-%dT%H%M')"
 
 mkdir -p $BACKUP_DIR
+cd $HOME
 
 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     -f $FILENAME \
-    $HOME/code $HOME/Development
+    code Development
 #    --aggressive-networking \
