@@ -4,7 +4,5 @@ color desert
 set directory=~/tmp
 " My old usual config for tab and trailing
 set lcs=tab:».,trail:·,extends:>,precedes:<,nbsp:+
-" Add underscore as a word character
-set iskeyword-=_ 
 " Quit with a single keypress
 map q :q<CR>
