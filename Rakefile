@@ -1,6 +1,6 @@
 # All files will be matched against this array, if the file starts the same
 # then it's ignored for automatic processing
-IGNORE_FOR_SYMLINK = %w[SYMLINK-CONF.sh dot.ssh vim-config vimrc emacs.d zshrc]
+IGNORE_FOR_SYMLINK = %w[SYMLINK-CONF.sh dot.ssh vim-config vimrc emacs.d zshrc iterm]
 
 desc 'Check out submodules and symlink all configuration files'
 task :default => [:setup_vim, :setup_emacs, :setup_zsh,
