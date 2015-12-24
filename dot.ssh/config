@@ -1,4 +1,9 @@
+Host github.com
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512
+
 Host *
+    ConnectTimeout 30
+    identityfile ~/.ssh/id_rsa
     identityfile ~/.ssh/id_dsa
     identityfile ~/.ssh/mediapop.rsa
     verifyhostkeydns yes
@@ -6,41 +11,6 @@ Host *
     ControlPersist 3600
     ServerAliveInterval 600
     ControlPath ~/tmp/ssh-%r@%h:%p
-
-Host github-ba
-    Hostname github.com
-    User git
-    IdentityFile /Users/ba/.ssh/ba-github
-
-Host popgun.github.com
-    Hostname github.com
-Host mediapop.github.com
-    Hostname github.com
-Host friendface.github.com
-    Hostname github.com
-Host slowstagram.github.com
-    Hostname github.com
-Host pixma.github.com
-    Hostname github.com
-
-# q dev host
-Host lurcher.kfib.org
-    Port 24
-
-Host dev-ba.mediapop.co
-    Hostname dev-ba.mediapop.co
-    RemoteForward 8010 localhost:9999
-
-Host staging.mediapop.co
-    Hostname 175.41.151.108
-
-Host awsg.mediapop.co
-    Hostname ec2-54-251-13-85.ap-southeast-1.compute.amazonaws.com
-    User ubuntu
-
-Host upgrade.sg
-    Hostname upgrade.sg
-    User upgrade
-Host npcec
-    Hostname upgrade.sg
-    User upgrade
+    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
+    Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr

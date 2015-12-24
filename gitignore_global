@@ -5,7 +5,16 @@
 
 # Python files
 *.py[co]
+__pycache__
+*.egg-info
 
 .DS_Store
 .sass-cache
 .dropbox
+.idea/
+.vagrant/
+.ropeproject/
+coverage/
+*.iml
+htmlcov
+.cache/

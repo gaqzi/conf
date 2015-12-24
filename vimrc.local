@@ -6,3 +6,5 @@ set directory=~/tmp
 set lcs=tab:».,trail:·,extends:>,precedes:<,nbsp:+
 " Quit with a single keypress
 map q :q<CR>
+
+Bundle 'chase/vim-ansible-yaml'

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.virtualenvs/flexget/bin/activate
+
+flexget --loglevel warning -c ~/Dropbox\ \(Personal\)/flexget.yml execute

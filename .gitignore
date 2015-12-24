@@ -6,6 +6,11 @@ dot.xmonad/*
 !dot.xmonad/xmonad-gnome.hs
 dot.pip/*
 !dot.pip/pip.conf
+dot.config/configstore/insight-bower.yml
+
+bin/terraform-*
+bin/terraform
+bin/otto
 
 dot.virtualenvs/*
 !dot.virtualenvs/pre*

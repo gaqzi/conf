@@ -8,7 +8,11 @@ FILENAME="$BACKUP_DIR/$(date '+%Y-%m-%dT%H%M')"
 mkdir -p $BACKUP_DIR
 cd $HOME
 
-tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
+nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     -f $FILENAME \
+    --exclude .vagrant \
+    --exclude node_modules \
+    --exclude dot.virtualenvs \
+    --exclude .tox \
     code Development
 #    --aggressive-networking \

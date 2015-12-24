@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DNS_TUNNEL_PASSWORD="shitballsbatman+"
+TUNNEL_COUNTRY=se
+TUNNEL_DNS_NAME=ts.sanitarium.se
+DNS_USER=$USER
+DNS_CHROOT=/tmp
+
+set -x
+sudo iodine -u $DNS_USER \
+  -t $DNS_CHROOT \
+  -P "$DNS_TUNNEL_PASSWORD" \
+  -f \
+  $@ \
+  $TUNNEL_DNS_NAME
+  #${TUNNEL_COUNTRY}.bouncy.cell.sanitarium.se \
