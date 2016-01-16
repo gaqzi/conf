@@ -47,6 +47,8 @@ casks = (
   dropbox
   emacs
   flux
+  font-source-code-pro
+  font-sauce-code-powerline
   gitup
   google-drive
   imagealpha
@@ -85,6 +87,8 @@ brews = (
 # Kafka and supporting tools
 brews+=(kafka librdkafka zookeeper)
 ####
+
+brew_tap caskroom/fonts
 
 for drink in "$brews[@]" ; do
   brew_install_or_upgrade "$drink"
