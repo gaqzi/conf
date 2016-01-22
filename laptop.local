@@ -67,7 +67,9 @@ casks = (
   steam
   the-unarchiver
   transmit
+  tuntap
   utorrent
+  vagrant
   vmware-fusion
 )
 
@@ -86,14 +88,23 @@ brews = (
 
 # Kafka and supporting tools
 brews+=(kafka librdkafka zookeeper)
-####
 
-brew_tap caskroom/fonts
 
 for drink in "$brews[@]" ; do
   brew_install_or_upgrade "$drink"
 done
 
+####
+
+brew_tap caskroom/fonts
+brew_tap caskroom/tuntap
+
 for drink in "$casks[@]" ; do
+  fanchy_echo "Installing or upgrading '$drink' from cask"
   brew_cask_install_or_upgrade "$drink"
+done
+
+for drink in "$brews[@]" ; do
+  fanchy_echo "Installing or upgrading '$drink'"
+  brew_install_or_upgrade "$drink"
 done

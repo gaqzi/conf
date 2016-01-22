@@ -1,2 +1,2 @@
-EXCLUDES="README.md Rakefile"
+EXCLUDES="README.md Rakefile 'Mac apps'"
 DOTFILES_DIRS="$HOME/.dotfiles-local $HOME/code/conf"
