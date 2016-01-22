@@ -1,9 +1,6 @@
 [submodule "vim-config"]
 	path = vim-config
 	url = git@github.com:neo/vim-config.git
-[submodule "emacs.d"]
-	path = emacs.d
-	url = git@github.com:gaqzi/emacs.d
 [submodule "zsh"]
 	path = zsh
 	url = git@github.com:gaqzi/zshrc
