@@ -39,16 +39,17 @@ brew_cask_install_or_upgrade() {
 }
 
 ####
-  1password
 casks=(
   alfred
   anki
   dockertoolbox
   dropbox
   emacs
+  evernote
+  firefox
   flux
-  font-source-code-pro
   font-sauce-code-powerline
+  font-source-code-pro
   gitup
   google-drive
   imagealpha
@@ -61,8 +62,8 @@ casks=(
   mplayerx
   omnifocus
   skitch
+  skype
   slack
-  spotify
   spotify
   steam
   the-unarchiver
@@ -76,6 +77,7 @@ casks=(
 brews=(
   aria2  # download accelerator
   autojump  # easily jump between directories you've visited before
+  fish
   htop-osx
   iodine  # dns tunnel
   jq
