@@ -13,6 +13,8 @@ nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     --exclude .vagrant \
     --exclude node_modules \
     --exclude dot.virtualenvs \
+    --exclude .virtualenvs \
     --exclude .tox \
-    code Development
+    --exclude .otto \
+    code Development workspace
 #    --aggressive-networking \
