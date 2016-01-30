@@ -39,8 +39,8 @@ brew_cask_install_or_upgrade() {
 }
 
 ####
-casks = (
   1password
+casks=(
   alfred
   anki
   dockertoolbox
@@ -73,7 +73,7 @@ casks = (
   vmware-fusion
 )
 
-brews = (
+brews=(
   aria2  # download accelerator
   autojump  # easily jump between directories you've visited before
   htop-osx
@@ -89,22 +89,17 @@ brews = (
 # Kafka and supporting tools
 brews+=(kafka librdkafka zookeeper)
 
-
-for drink in "$brews[@]" ; do
-  brew_install_or_upgrade "$drink"
-done
-
 ####
 
 brew_tap caskroom/fonts
 brew_tap caskroom/tuntap
 
-for drink in "$casks[@]" ; do
+for drink in "${casks[@]}" ; do
   fanchy_echo "Installing or upgrading '$drink' from cask"
   brew_cask_install_or_upgrade "$drink"
 done
 
-for drink in "$brews[@]" ; do
+for drink in "${brews[@]}" ; do
   fanchy_echo "Installing or upgrading '$drink'"
   brew_install_or_upgrade "$drink"
 done
