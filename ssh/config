@@ -4,8 +4,6 @@ Host github.com
 Host *
     ConnectTimeout 30
     identityfile ~/.ssh/id_rsa
-    identityfile ~/.ssh/id_dsa
-    identityfile ~/.ssh/mediapop.rsa
     verifyhostkeydns yes
     ControlMaster auto
     ControlPersist 3600
