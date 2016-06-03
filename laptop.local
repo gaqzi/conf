@@ -85,6 +85,7 @@ brews=(
   q
   tarsnap
   the_platinum_searcher
+  tree
   wget
 )
 
