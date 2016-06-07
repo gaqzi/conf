@@ -98,6 +98,7 @@
  '(tab-width 2)
  '(tabbar-background-color "grey20")
  '(tabbar-separator (quote (0.2)))
+ '(transient-mark-mode nil)
  '(truncate-lines t)
  '(visible-bell t)
  '(whitespace- nil)
