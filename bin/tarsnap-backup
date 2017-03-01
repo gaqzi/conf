@@ -19,5 +19,9 @@ nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     --exclude target \
     --exclude gradle \
     --exclude build \
+    --exclude \*.iso \
+    --exclude \*.vmdk \
+    --exclude output-vmware-iso \
+    --exclude packer_cache \
     code workspace
 #    --aggressive-networking \
