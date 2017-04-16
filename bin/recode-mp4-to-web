@@ -1,0 +1,21 @@
+#!/bin/sh
+
+INPUT_FILE=$1
+OUTPUT_FILE=$2
+
+if [ -z "$INPUT_FILE" ] ; then
+  echo "No input file specified".
+  echo "Usage: $(basename $0) <input file.mp4> [output-file.mp4]"
+  echo "Will override the input file if no output file is provided"
+  exit 1
+fi
+
+if [ -z "$OUTPUT_FILE" ] ; then
+  OUTPUT_FILE="$INPUT_FILE"
+fi
+
+ffmpeg -i "$INPUT_FILE" \
+       -movflags faststart \
+       -acodec copy \
+       -vcodec copy \
+       "$OUTPUT_FILE"
