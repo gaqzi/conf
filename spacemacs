@@ -179,6 +179,7 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(ring-bell-function (quote ignore) t)
+ '(require-final-newline t)
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(sh-basic-offset 2)
  '(sh-indentation 2)
