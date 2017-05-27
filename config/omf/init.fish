@@ -1,2 +1,2 @@
 # Bob the fish color scheme
-set theme_color_scheme zenburn
+set -gx theme_color_scheme zenburn
