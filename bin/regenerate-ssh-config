@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Store your ssh configuration in ~/.ssh/config.d/ and run this script
+# generate a new ~/.ssh/config that consists of them.
+
+: ${SSH_CONFIG_DIRECTORY:="$HOME/.ssh"}
+: ${SSH_CONFIG_PATH:="${SSH_CONFIG_DIRECTORY}/config"}
+: ${SSH_CONFIGD_DIRECTORY:="${SSH_CONFIG_DIRECTORY}/config.d"}
+
+if [ ! -d "${SSH_CONFIGD_DIRECTORY}" ] ; then
+  echo "Can't find config.d directory: ${SSH_CONFIGD_DIRECTORY}"
+  exit 1
+fi
+
+cat ${SSH_CONFIGD_DIRECTORY}/* > "${SSH_CONFIG_PATH}"

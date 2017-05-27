@@ -1,6 +1,3 @@
-Host github.com
-    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512
-
 Host *
     ConnectTimeout 30
     identityfile ~/.ssh/id_rsa
