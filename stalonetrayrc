@@ -1,9 +1,0 @@
-background black
-geometry 1x1-55+0
-grow_gravity NE
-icon_gravity N
-icon_size 8
-transparent false
-#vertical
-#dockapp_mode simple
-sticky true

@@ -1,2 +1,0 @@
-include "/home/ba/code/conf/dot.gtk/Clearlooks-Compact/gtk-2.0/gtkrc"
-gtk-key-theme-name = "Emacs"
