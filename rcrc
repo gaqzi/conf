@@ -1,2 +1,3 @@
 EXCLUDES="README.md Rakefile Mac-apps zsh vim-config"
 DOTFILES_DIRS="$HOME/code/conf"
+UNDOTTED="bin"
