@@ -1,22 +1,24 @@
 import XMonad
-import XMonad.Config.Gnome
-import XMonad.Util.EZConfig
-
-myManageHook = composeAll (
-    [ manageHook gnomeConfig
-    , className =? "Unity-2d-panel" --> doIgnore
-    , className =? "Unity-2d-launcher" --> doFloat
-    ])
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
+import System.IO
 
 main = do
-  xmonad $ gnomeConfig {
-    terminal = "urxvt",
-    modMask = mod4Mask,
-    manageHook = myManageHook
-    }
-    `additionalKeysP`
-    [ ("M-p", spawn "dmenu_run -b")
-    ]
-                     -- `additionalKeys`
-                     -- [ ((mod4Mask, xK_p), spawn "dmenu_run -b") -- dmenu
-                     -- ]
+    xmproc <- spawnPipe "xmobar"
+
+    xmonad $ defaultConfig
+        { manageHook = manageDocks <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , logHook = dynamicLogWithPP xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        }
+        , modMask = mod4Mask     -- Rebind Mod to the Windows key
+        , terminal = "konsole"
+        } `additionalKeys`
+        [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
+        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        , ((0, xK_Print), spawn "scrot")
+        ]
