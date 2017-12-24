@@ -15,6 +15,7 @@ nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     --exclude dot.virtualenvs \
     --exclude .virtualenvs \
     --exclude .tox \
+    --exclude .cache \
     --exclude .otto \
     --exclude target \
     --exclude gradle \
@@ -23,5 +24,8 @@ nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     --exclude \*.vmdk \
     --exclude output-vmware-iso \
     --exclude packer_cache \
+    --exclude venv \
+    --exclude lambda_venv \
+    --exclude lambda_function.zip \
     code workspace
 #    --aggressive-networking \
