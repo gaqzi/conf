@@ -1,6 +1,5 @@
 Host *
     ConnectTimeout 30
-    identityfile ~/.ssh/id_rsa
     verifyhostkeydns yes
     ControlMaster auto
     ControlPersist 3600
