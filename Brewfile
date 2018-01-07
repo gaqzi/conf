@@ -15,7 +15,7 @@ brew 'rcm'
 brew 'tarsnap'
 brew 'the_platinum_searcher'
 brew 'tree'
-brew 'vim'
+brew 'neovim'
 brew 'wget'
 
 cask 'alfred'
