@@ -7,7 +7,7 @@ brew 'autojump'
 brew 'emacs-plus', link: true
 brew 'fish'
 brew 'graphviz', args: ['with-app']
-brew 'htop-osx'
+brew 'htop'
 brew 'jq'
 brew 'pyenv'
 brew 'q'
