@@ -43,6 +43,7 @@ cask 'steam'
 cask 'the-unarchiver'
 cask 'telegram'
 cask 'transmit'
+cask 'tunnelblick'
 cask 'vagrant'
 cask 'vmware-fusion'
 
