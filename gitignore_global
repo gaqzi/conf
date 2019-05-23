@@ -8,6 +8,7 @@
 __pycache__
 *.egg-info
 .eggs
+.hypothesis
 
 .DS_Store
 .sass-cache
@@ -20,3 +21,6 @@ coverage/
 htmlcov
 .cache/
 .direnv/
+.pytest_cache
+
+*.pkl
