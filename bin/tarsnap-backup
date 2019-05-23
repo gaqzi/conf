@@ -27,5 +27,6 @@ nice -n 18 tarsnap -c --keyfile $KEYFILE --cachedir $CACHE_DIR \
     --exclude venv \
     --exclude lambda_venv \
     --exclude lambda_function.zip \
+    --exclude .pants.d
     code workspace
 #    --aggressive-networking \
