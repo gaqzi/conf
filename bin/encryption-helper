@@ -1,0 +1,35 @@
+#!/bin/bash
+
+MODE=$1
+
+case "${MODE}" in
+  encrypt)
+    file=$2
+    password=$3
+    encryption_format=$4
+
+    if [ -z "${encryption_format}" ] ; then
+      encryption_format=aes-256-cbc
+    fi
+
+    openssl enc "-${encryption_format}" -base64 -k "${password}" -in "${file}" -out "${file}.encrypted--${encryption_format}"
+  ;;
+
+  decrypt)
+    file=$2
+    password=$3
+    encryption_format=$4
+    outfile=$(basename $file | sed -E 's/(\.encrypted--.*)$//')
+
+    if [ -z "${encryption_format}" ] ; then
+      encryption_format=$(echo $file | sed -E 's/(.*)\.encrypted--(.*)$/\2/')
+    fi
+
+    openssl enc -d "-${encryption_format}" -base64 -k "${password}" -in "${file}" -out "${outfile}"
+  ;;
+
+  *)
+    echo "Usage: $(basename $0) <encrypt/decrypt> <file> <password> [encryption-format]"
+    echo "    encryption-format is by default ais-256-cbc"
+  ;;
+esac
