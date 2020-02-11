@@ -1,5 +1,19 @@
 #!/bin/bash
 
+match_pattern=""
+while getopts "p:" opt; do
+  case "${opt}" in
+    p)
+      match_pattern="${OPTARG}"
+      ;;
+    :)
+      echo "Unknown option parsed: ${opt}" >&2
+      exit 2
+      ;;
+  esac
+  shift $((OPTIND -1))
+done
+
 shaish=$1
 shift
 
@@ -11,4 +25,4 @@ fi
 
 [ -n "${DEBUG}" ] && set -x
 
-$@ $(git-changed $shaish | rargs -d' ' echo ./{1})
+$@ $(git-changed -p "${match_pattern}" $shaish | rargs -d' ' echo ./{1})
