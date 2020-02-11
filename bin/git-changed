@@ -1,0 +1,20 @@
+#!/bin/bash
+
+shaish=$1
+match_pattern=$2
+
+if [ -z "${shaish}" ]; then
+  echo "Usage: $(basename $0) <git shaish> [file pattern to match]" >&2
+  echo "  Returns all matching files that changed since shaish"     >&2
+  echo "  If no file pattern provided returns all changed folders"  >&2
+  exit 1
+fi
+
+set -o pipefail
+if [ -z "${match_pattern}" ]; then
+  git diff "${shaish}" --name-only | rargs -d' ' dirname {1} | sort -u
+  exit $?
+fi
+
+git diff "${shaish}" --name-only | grep "${match_pattern}"
+exit $?

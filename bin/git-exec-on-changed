@@ -1,0 +1,14 @@
+#!/bin/bash
+
+shaish=$1
+shift
+
+if [ -z "${shaish}" ] ; then
+  echo "Usage: $(basename $0) <git shaish> args..." >&2
+  echo "  For all changed directories since shaish execute args once" >&2
+  exit 1
+fi
+
+[ -n "${DEBUG}" ] && set -x
+
+$@ $(git-changed $shaish | rargs -d' ' echo ./{1})
