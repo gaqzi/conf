@@ -1,27 +1,110 @@
 ! xrdb -load .Xdefaults
 
+Xft.dpi: 192 
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgba
+! Xft.dpi: 220 
+Xcursor.theme: Adwaita
+Xcursor.size: 48
+
 ! Makes sure that alt is meta in xterm
 xterm*metaSendsEscape:   true
 
 ! xterm colors and fonts
-xterm*background: black
-xterm*foreground: lightgray
-xterm*boldFont: fixed
-xterm*font: fixed
+!xterm*background: black
+!xterm*foreground: lightgray
+!xterm*boldFont: fixed
+!xterm*font: fixed
+!xterm*renderFont: true
+!xterm*faceName: VeraMono
+!xterm*faceSize: 10
+
+! uxterm*background: black
+! uxterm*foreground: lightgray
+! uxterm*boldFont: fixed
+! uxterm*font: fixed
+*xterm*renderFont: true
+*xterm*faceName: Source Code Pro
+*xterm*faceSize: 10
+
+! Zenburn color-scheme
+*xterm*background:  #3f3f3f
+*xterm*foreground:  #dcdccc
+! black + red
+*xterm*color0:      #1E2320
+*xterm*color1:      #705050
+! green + yellow
+*xterm*color2:      #60b48a
+*xterm*color3:      #dfaf8f
+! blue + purple
+*xterm*color4:      #506070
+*xterm*color5:      #dc8cc3
+! cyan + white
+*xterm*color6:      #8cd0d3
+*xterm*color7:      #dcdccc
+! bright-black + bright-red
+*xterm*color8:      #709080
+*xterm*color9:      #dca3a3
+! bright-green + bright-yellow
+*xterm*color10:     #c3bf9f
+*xterm*color11:     #f0dfaf
+! bright-blue + bright-purple
+*xterm*color12:     #94bff3
+*xterm*color13:     #ec93d3
+! bright-cyan + bright-white
+*xterm*color14:     #93e0e3
+*xterm*color15:     #ffffff
 
 ! urxvt configuration
 urxvt.scrollBar: false
 urxvt.saveLines: 3000
 urxvt.perl-ext-common: default,matcher
-urxvt.urlLauncher: chromium-browser
+urxvt.urlLauncher: firefox
 urxvt.matcher*button: 1
 urxvt.cutchars: "`\"()'*<>[]{|}"
+urxvt.renderFont: true
+!urxvt.faceName: Source Code Pro
+!urxvt.faceSize: 16
+urxvt*font: xft:Source Code Pro:size=10
 
-urxvt*background: black
-urxvt*foreground: lightgray
-urxvt*font: fixed
-urxvt*boldFont: fixed
-urxvt*boldMode: false
+
+! Zenburn color-scheme
+urxvt*background:  #3f3f3f
+urxvt*foreground:  #dcdccc
+! black + red
+urxvt*color0:      #1E2320
+urxvt*color1:      #705050
+! green + yellow
+urxvt*color2:      #60b48a
+urxvt*color3:      #dfaf8f
+! blue + purple
+urxvt*color4:      #506070
+urxvt*color5:      #dc8cc3
+! cyan + white
+urxvt*color6:      #8cd0d3
+urxvt*color7:      #dcdccc
+! bright-black + bright-red
+urxvt*color8:      #709080
+urxvt*color9:      #dca3a3
+! bright-green + bright-yellow
+urxvt*color10:     #c3bf9f
+urxvt*color11:     #f0dfaf
+! bright-blue + bright-purple
+urxvt*color12:     #94bff3
+urxvt*color13:     #ec93d3
+! bright-cyan + bright-white
+urxvt*color14:     #93e0e3
+urxvt*color15:     #ffffff
+
+!urxvt*background: black
+!urxvt*foreground: lightgray
+!urxvt*font: fixed
+!urxvt*boldFont: fixed
+!urxvt*boldMode: false
 ! Normal
 ! color0    black
 ! color1    red
@@ -31,14 +114,14 @@ urxvt*boldMode: false
 ! color5    purple
 ! color6    cyan
 ! color7    white
-urxvt*color0:    #000000
-urxvt*color1:    #cd0000
-urxvt*color2:    #00cd00
-urxvt*color3:    #cdcd00
-urxvt*color4:    #0000ee
-urxvt*color5:    #cd00cd
-urxvt*color6:    #00cdcd
-urxvt*color7:    #e5e5e5
+!urxvt*color0:    #000000
+!urxvt*color1:    #cd0000
+!urxvt*color2:    #00cd00
+!urxvt*color3:    #cdcd00
+!urxvt*color4:    #0000ee
+!urxvt*color5:    #cd00cd
+!urxvt*color6:    #00cdcd
+!urxvt*color7:    #e5e5e5
 ! Light
 ! color8    black
 ! color9    red
@@ -48,14 +131,14 @@ urxvt*color7:    #e5e5e5
 ! color13    purple
 ! color14    cyan
 ! color15    white
-urxvt*color8:    #7f7f7f
-urxvt*color9:    #ff0000
-urxvt*color10:    #00ff00
-urxvt*color11:    #ffff00
-urxvt*color12:    #5c5cff
-urxvt*color13:    #ff00ff
-urxvt*color14:    #00ffff
-urxvt*color15:    #ffffff
+!urxvt*color8:    #7f7f7f
+!urxvt*color9:    #ff0000
+!urxvt*color10:    #00ff00
+!urxvt*color11:    #ffff00
+!urxvt*color12:    #5c5cff
+!urxvt*color13:    #ff00ff
+!urxvt*color14:    #00ffff
+!urxvt*color15:    #ffffff
 
 ! urxvt/x-terminal-emulator configuration
 x-terminal-emulator.scrollBar: false
@@ -65,42 +148,70 @@ x-terminal-emulator.urlLauncher: chromium-browser
 x-terminal-emulator.matcher*button: 1
 x-terminal-emulator.cutchars: "`\"()'*<>[]{|}"
 
-x-terminal-emulator*background: black
-x-terminal-emulator*foreground: lightgray
+! x-terminal-emulator*background: black
+! x-terminal-emulator*foreground: lightgray
 x-terminal-emulator*font: fixed
 x-terminal-emulator*boldFont: fixed
 x-terminal-emulator*boldMode: false
-! Normal
-! color0    black
-! color1    red
-! color2    green
-! color3    yellow
-! color4    blue
-! color5    purple
-! color6    cyan
-! color7    white
-x-terminal-emulator*color0:    #000000
-x-terminal-emulator*color1:    #cd0000
-x-terminal-emulator*color2:    #00cd00
-x-terminal-emulator*color3:    #cdcd00
-x-terminal-emulator*color4:    #0000ee
-x-terminal-emulator*color5:    #cd00cd
-x-terminal-emulator*color6:    #00cdcd
-x-terminal-emulator*color7:    #e5e5e5
-! Light
-! color8    black
-! color9    red
-! color10    green
-! color11    yellow
-! color12    blue
-! color13    purple
-! color14    cyan
-! color15    white
-x-terminal-emulator*color8:    #7f7f7f
-x-terminal-emulator*color9:    #ff0000
-x-terminal-emulator*color10:    #00ff00
-x-terminal-emulator*color11:    #ffff00
-x-terminal-emulator*color12:    #5c5cff
-x-terminal-emulator*color13:    #ff00ff
-x-terminal-emulator*color14:    #00ffff
-x-terminal-emulator*color15:    #ffffff
+! ! Normal
+! ! color0    black
+! ! color1    red
+! ! color2    green
+! ! color3    yellow
+! ! color4    blue
+! ! color5    purple
+! ! color6    cyan
+! ! color7    white
+! x-terminal-emulator*color0:    #000000
+! x-terminal-emulator*color1:    #cd0000
+! x-terminal-emulator*color2:    #00cd00
+! x-terminal-emulator*color3:    #cdcd00
+! x-terminal-emulator*color4:    #0000ee
+! x-terminal-emulator*color5:    #cd00cd
+! x-terminal-emulator*color6:    #00cdcd
+! x-terminal-emulator*color7:    #e5e5e5
+! ! Light
+! ! color8    black
+! ! color9    red
+! ! color10    green
+! ! color11    yellow
+! ! color12    blue
+! ! color13    purple
+! ! color14    cyan
+! ! color15    white
+! x-terminal-emulator*color8:    #7f7f7f
+! x-terminal-emulator*color9:    #ff0000
+! x-terminal-emulator*color10:    #00ff00
+! x-terminal-emulator*color11:    #ffff00
+! x-terminal-emulator*color12:    #5c5cff
+! x-terminal-emulator*color13:    #ff00ff
+! x-terminal-emulator*color14:    #00ffff
+! x-terminal-emulator*color15:    #ffffff
+
+! Zenburn color-scheme
+x-terminal-emulator.background:  #3f3f3f
+x-terminal-emulator.foreground:  #dcdccc
+! black + red
+x-terminal-emulator.color0:      #1E2320
+x-terminal-emulator.color1:      #705050
+! green + yellow
+x-terminal-emulator.color2:      #60b48a
+x-terminal-emulator.color3:      #dfaf8f
+! blue + purple
+x-terminal-emulator.color4:      #506070
+x-terminal-emulator.color5:      #dc8cc3
+! cyan + white
+x-terminal-emulator.color6:      #8cd0d3
+x-terminal-emulator.color7:      #dcdccc
+! bright-black + bright-red
+x-terminal-emulator.color8:      #709080
+x-terminal-emulator.color9:      #dca3a3
+! bright-green + bright-yellow
+x-terminal-emulator.color10:     #c3bf9f
+x-terminal-emulator.color11:     #f0dfaf
+! bright-blue + bright-purple
+x-terminal-emulator.color12:     #94bff3
+x-terminal-emulator.color13:     #ec93d3
+! bright-cyan + bright-white
+x-terminal-emulator.color14:     #93e0e3
+x-terminal-emulator.color15:     #ffffff

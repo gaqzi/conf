@@ -1,3 +1,3 @@
-EXCLUDES="README.md Rakefile Mac-apps zsh vim-config vimrc.* emacs.d"
+EXCLUDES="README.md Brewfile Rakefile Mac-apps zsh vim-config vimrc.* emacs.d"
 DOTFILES_DIRS="$HOME/code/conf"
 UNDOTTED="bin"
