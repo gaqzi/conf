@@ -23,6 +23,10 @@ if [ -z "${shaish}" ] ; then
   exit 1
 fi
 
+if [ $1 == '--' ]; then  # -- is used to indicate the rest are cli arguments
+  shift
+fi
+
 [ -n "${DEBUG}" ] && set -x
 
 $@ $(git-changed -p "${match_pattern}" $shaish | rargs -d' ' echo ./{1})
