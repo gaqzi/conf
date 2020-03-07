@@ -1,0 +1,45 @@
+#!/bin/bash
+
+###
+
+function check-black() {
+  local files=$@
+  local check='--check'
+
+  [ "$FIX" = 'true' ] && check=''
+
+  black ${check} ${files}
+}
+
+function check-isort() {
+  local files=$@
+  local check='-c'
+
+  [ "$FIX" = 'true' ] && check=''
+
+  isort ${check} ${files}
+}
+
+###
+
+DIFF_AGAINST=$1
+
+if [ -z "$DIFF_AGAINST" ]; then
+  echo "Don't know where in git to check against." >&2
+  echo "  Usage: $(basename $0) [--cached|HEAD~1|shaish]" >&2
+  echo "  If the environment variable FIX=true then don't check, actually" >&2
+  echo "    fix the file" >&2
+  exit 1
+fi
+
+pyfiles=$(git diff $DIFF_AGAINST --name-only --diff-filter=ACM | grep '.py$' | grep -v 'pb2.py$')
+[ -z "${pyfiles}" ] && exit 0
+
+failed=0
+check-black $pyfiles
+[ $? != 0 ] && failed=1
+
+check-isort $pyfiles
+[ $? != 0 ] && failed=1
+
+exit $failed

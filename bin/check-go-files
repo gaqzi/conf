@@ -1,0 +1,43 @@
+#!/bin/bash
+
+###
+
+function check-goimports() {
+  local files=$@
+  local check='-l'
+  [ "$FIX" = 'true' ] && check=''
+
+  unformatted=$(goimports $gofiles)
+  [ -z "$unformatted" ] && return 0
+
+  for fn in $unformatted; do
+    if [ "$FIX" = 'true' ]; then
+      goimports -w "$PWD/$fn"
+    else 
+      echo >&2 "  goimports -w $PWD/$fn"
+    fi
+  done
+
+  return 1
+}
+
+###
+
+DIFF_AGAINST=$1
+
+if [ -z "$DIFF_AGAINST" ]; then
+  echo "Don't know where in git to check against." >&2
+  echo "  Usage: $(basename $0) [--cached|HEAD~1|shaish]" >&2
+  echo "  If the environment variable FIX=true then don't check, actually " >&2
+  echo "    fix the file." >&2
+  exit 1
+fi
+
+gofiles=$(git diff $DIFF_AGAINST --name-only --diff-filter=ACM | grep ".go$")
+[ -z "$gofiles" ] && exit 0
+
+local failed=0
+check-goimports ${gofiles}
+[ $? != 0 ] && failed=1
+
+exit $failed
