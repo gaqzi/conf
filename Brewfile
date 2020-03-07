@@ -4,6 +4,7 @@ tap 'caskroom/fonts'
 
 brew 'aria2'
 brew 'autojump'
+brew 'bat'
 brew 'emacs-plus', link: true
 brew 'fish'
 brew 'htop'
