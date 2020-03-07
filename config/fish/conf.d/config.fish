@@ -6,3 +6,4 @@ set -x EDITOR 'nvim'
 set fish_color_autosuggestion c0c0c0  # silver
 alias vim nvim
 alias cat bat
+alias ls lsd

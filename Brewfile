@@ -9,6 +9,7 @@ brew 'emacs-plus', link: true
 brew 'fish'
 brew 'htop'
 brew 'jq'
+brew 'lsd'
 brew 'mpv', args: ['with-bundle']
 brew 'neovim'
 brew 'pyenv'
