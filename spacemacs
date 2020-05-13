@@ -520,3 +520,38 @@ layers configuration."
  '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil)
+ '(graphviz-dot-indent-width 2 t)
+ '(package-selected-packages
+   (quote
+    (helm-gtags ggtags ivy lua-mode go-guru go-eldoc company-go go-mode csv-mode dash-functional dash org-mime web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode insert-shebang fish-mode company-shell nix-mode macrostep helm-nixos-options ghub let-alist elisp-slime-nav company-nixos-options nixos-options auto-compile packed hcl-mode powerline alert log4e gntp markdown-mode parent-mode projectile request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter gh logito pcache pos-tip flycheck flx magit smartparens iedit anzu evil goto-chg undo-tree diminish web-completion-data ghc haskell-mode company hydra inflections edn multiple-cursors paredit peg eval-sexp-fu highlight cider seq pkg-info clojure-mode epl inf-ruby bind-map bind-key yasnippet pythonic f s helm avy helm-core auto-complete popup graphviz-dot-mode yapfify winum uuidgen rake py-isort pug-mode org-projectile org-category-capture org-plus-contrib org-download minitest live-py-mode link-hint jinja2-mode intero hlint-refactor hide-comnt helm-hoogle github-search magit-popup git-commit async with-editor marshal ht fuzzy eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump company-statistics company-ghci company-ansible company-anaconda column-enforce-mode clojure-snippets adaptive-wrap queue spinner zenburn-theme yaml-mode xterm-color ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe use-package toc-org terraform-mode tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shm shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv pytest pyenv-mode popwin pip-requirements persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls lorem-ipsum linum-relative leuven-theme less-css-mode jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode disaster diff-hl define-word cython-mode company-web company-quickhelp company-ghc company-cabal company-c-headers cmm-mode cmake-mode clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol ansible-doc ansible anaconda-mode aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(require-final-newline t)
+ '(ring-bell-function (quote ignore))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
+ '(sh-basic-offset 2)
+ '(sh-indentation 2)
+ '(vc-follow-symlinks nil)
+ '(yaml-block-literal-electric-alist (quote ((124 . "") (62 . "")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+)
