@@ -4,16 +4,14 @@
 
 function check-goimports() {
   local files=$@
-  local check='-l'
-  [ "$FIX" = 'true' ] && check=''
 
-  unformatted=$(goimports $gofiles)
+  unformatted=$(goimports -l $gofiles)
   [ -z "$unformatted" ] && return 0
 
   for fn in $unformatted; do
     if [ "$FIX" = 'true' ]; then
       goimports -w "$PWD/$fn"
-    else 
+    else
       echo >&2 "  goimports -w $PWD/$fn"
     fi
   done
@@ -36,7 +34,7 @@ fi
 gofiles=$(git diff $DIFF_AGAINST --name-only --diff-filter=ACM | grep ".go$")
 [ -z "$gofiles" ] && exit 0
 
-local failed=0
+failed=0
 check-goimports ${gofiles}
 [ $? != 0 ] && failed=1
 
