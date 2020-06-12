@@ -31,7 +31,12 @@ if [ -z "$DIFF_AGAINST" ]; then
   exit 1
 fi
 
-gofiles=$(git diff $DIFF_AGAINST --name-only --diff-filter=ACM | grep ".go$")
+gofiles=$(
+  git diff $DIFF_AGAINST --name-only --diff-filter=ACM \
+  | grep ".go$" \
+  | grep -v ".pb.go$" \
+  | grep -v ".micro.go$"
+)
 [ -z "$gofiles" ] && exit 0
 
 failed=0
