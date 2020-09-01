@@ -13,7 +13,7 @@
         pause_after_current_file = !pause_after_current_file;
         mp.commandv(
             "show-text",
-            "pause after current file: " + pause_after_current_file,
+            "pause after current file: " + pause_after_current_file
         );
     });
 
@@ -23,7 +23,7 @@
         mp.set_property("pause", "yes");
         mp.commandv(
             "show-text",
-            "paused because pause after current file is set",
+            "paused because pause after current file is set"
         );
     }
 
