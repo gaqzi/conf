@@ -32,7 +32,6 @@ cask 'graphviz'
 cask 'imagealpha'
 cask 'imageoptim'
 cask 'iterm2'
-cask 'java'
 cask 'jetbrains-toolbox'
 cask 'keycastr'
 cask 'mullvadvpn'
@@ -46,7 +45,6 @@ cask 'spotify'
 cask 'steam'
 cask 'telegram'
 cask 'the-unarchiver'
-cask 'tunnelblick'
 cask 'tweetbot'
 cask 'vagrant'
 cask 'vmware-fusion'
@@ -55,6 +53,5 @@ mas 'Bear', id: 1091189122
 mas 'Core Tunnel', id: 1354318707
 mas 'Growl', id: 467939042
 mas 'Keynote', id: 409183694
-mas 'Tweetbot', id: 1384080005
 mas 'Xcode', id: 497799835
 
