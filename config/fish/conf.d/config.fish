@@ -7,3 +7,5 @@ set fish_color_autosuggestion c0c0c0  # silver
 alias vim nvim
 alias cat bat
 alias ls lsd
+
+[ -f $HOME/.fishrc_local ]; and source $HOME/.fishrc_local
