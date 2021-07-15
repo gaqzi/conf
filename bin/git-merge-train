@@ -1,7 +1,6 @@
 #!/bin/bash
 
 : ${DRY_RUN:=true}
-: ${IGNORE_GOMOD_CHANGES:=false}
 
 if [ $# -lt 2 ]; then
     echo "Usage: git merge-train <first branch> <branch based on first branch> [... branches based on previous]"
@@ -12,14 +11,6 @@ if [ "${DRY_RUN}" != 'false' ]; then
     echo "In dry run mode. To rebase the entire merge train run:"
     echo "    DRY_RUN=false git merge-train $@"
 fi
-
-# Since go mod keeps upgrading at its own whim this seems like the only
-# reasonable thing when you haven't been doing any local changes
-function deal-with-gomod() {
-    [ "${IGNORE_GOMOD_CHANGES}" != 'true' ] && return
-
-    git checkout go.mod go.sum
-}
 
 branch_before=$(git branch --show-current)
 parent_branch=master
@@ -32,7 +23,6 @@ for branch in ${@}; do
     fi
 
     git checkout ${branch}
-    deal-with-gomod
 
     if [ "${DRY_RUN}" != 'false' ]; then
         echo "git rebase --onto ${parent_branch} ${fork_point}"
