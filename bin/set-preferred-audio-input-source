@@ -1,0 +1,30 @@
+#!/bin/bash
+# Script to be used with ToothFairy to select my preferred sound input
+# sources when my AirPods Max are connected to my Mac.
+
+if ! which -s SwitchAudioSource; then
+    echo "SwitchAudioSource not installed. Install by running: brew install switchaudio-osx" >&2
+    exit 1
+fi
+
+PREFERRED_SOURCES=(
+    "Yeti X"
+    "AirPods Max"
+    "Built-in Microphone"
+)
+
+all_sources=$(SwitchAudioSource -t input -a)
+for source in "${PREFERRED_SOURCES[@]}"; do
+    if echo $all_sources | grep -q "${source}"; then
+        if SwitchAudioSource -t input -s "${source}"; then
+            exit 0
+        else
+            echo "Failed to set '${source}', will try next" >&2
+        fi
+    fi
+done
+
+echo "Failed to find a sound source to connect to" >&2
+echo "Preferred sources: ${PREFERRED_SOURCES}" >&2
+echo "Found sources    : ${all_sources}" >&2
+exit 2
