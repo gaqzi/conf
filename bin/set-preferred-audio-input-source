@@ -16,11 +16,9 @@ PREFERRED_SOURCES=(
 all_sources=$(SwitchAudioSource -t input -a)
 for source in "${PREFERRED_SOURCES[@]}"; do
     if echo $all_sources | grep -q "${source}"; then
-        if SwitchAudioSource -t input -s "${source}"; then
-            exit 0
-        else
-            echo "Failed to set '${source}', will try next" >&2
-        fi
+        SwitchAudioSource -t input -s "${source}" && exit 0
+
+        echo "Failed to set '${source}', will try next" >&2
     fi
 done
 
