@@ -15,21 +15,15 @@ __pycache__
 .dropbox
 .idea/
 .vagrant/
-.ropeproject/
 coverage/
 *.iml
 htmlcov
 .cache/
 .direnv/
 .pytest_cache
-*.pkl
 .eggs
 
 
 # Terraform
 .terraform/
 terraform.tfstate.d/
-
-# Pants
-.pants.d
-.pants.workdir.file_lock
