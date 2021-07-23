@@ -7,6 +7,12 @@ if ! which -s SwitchAudioSource; then
     exit 1
 fi
 
+# It seems that doing the change immediately on connect with ToothFairy
+# it won't actually work. Editor isn't set by default when running
+# so it seemed like a good candidate to detect when we're running with
+# the fairy. The time was decided by trial and error. :)
+[ -z "$EDITOR" ] && sleep 2
+
 PREFERRED_SOURCES=(
     "Yeti X"
     "AirPods Max"
