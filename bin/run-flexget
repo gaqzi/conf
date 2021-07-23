@@ -2,4 +2,4 @@
 
 source ~/.virtualenvs/flexget/bin/activate
 
-exec flexget --loglevel warning -c ~/Dropbox/flexget.yml execute
+exec flexget --loglevel warning -c ~/Dropbox/flexget/config.yml execute
