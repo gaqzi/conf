@@ -3,10 +3,10 @@
 INPUT=$1
 shift
 
-if [ -n "$INPUT" ]; then
-  echo "No input provided!" >2
-  echo "Usage: $(basename $0) input file [args ...]" >2
-  echo "where args are passed to the mermaid CLI" >2
+if [ -z "${INPUT}" ]; then
+  echo "No input provided!" >&2
+  echo "Usage: $(basename $0) input file [args ...]" >&2
+  echo "where args are passed to the mermaid CLI" >&2
 fi
 
 set -x
