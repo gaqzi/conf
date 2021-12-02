@@ -1,0 +1,13 @@
+#!/bin/bash
+
+INPUT=$1
+shift
+
+if [ -n "$INPUT" ]; then
+  echo "No input provided!" >2
+  echo "Usage: $(basename $0) input file [args ...]" >2
+  echo "where args are passed to the mermaid CLI" >2
+fi
+
+set -x
+docker run -it -v $(pwd):/data minlag/mermaid-cli -i "/data/${INPUT}" $@
