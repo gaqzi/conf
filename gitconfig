@@ -22,6 +22,7 @@
 	untracked = cyan
 [alias]
 	st = status
+	sw = switch
 	ci = commit
 	br = branch
 	co = checkout
