@@ -8,17 +8,15 @@ brew 'bat'
 brew 'emacs-plus', link: true
 brew 'fish'
 brew 'fd'
+brew 'grex'
 brew 'htop'
 brew 'jq'
 brew 'lsd'
 brew 'neovim'
-brew 'pyenv'
 brew 'q'
 brew 'rcm'
-brew 'ripgrep'
 brew 'switchaudio-osx'
 brew 'tarsnap'
-brew 'the_platinum_searcher'
 brew 'tree'
 brew 'wget'
 
@@ -53,7 +51,5 @@ cask 'tweetbot'
 cask 'vagrant'
 cask 'vmware-fusion'
 
-mas 'Core Tunnel', id: 1354318707
-mas 'Growl', id: 467939042
 mas 'Keynote', id: 409183694
 mas 'Xcode', id: 497799835
