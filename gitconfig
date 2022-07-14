@@ -35,5 +35,6 @@
 	fix = commit --fixup
 [push]
 	default = simple
+	autoSetupRemote = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
