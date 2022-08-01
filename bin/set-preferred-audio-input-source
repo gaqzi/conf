@@ -16,6 +16,8 @@ fi
 PREFERRED_SOURCES=(
     "Yeti X"
     "AirPods Max"
+    "isolation tank" # airpods max
+    "icepicks"       # airpods pro
     "Built-in Microphone"
 )
 
