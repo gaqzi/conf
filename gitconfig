@@ -1,5 +1,9 @@
 [core]
 	excludesfile = ~/.gitignore_global
+
+	# large repo improvements through daemon from 2.37.0
+	fsmonitor = true
+	untrackedCache = true
 [user]
 	name = Björn Andersson
 	email = ba@sanitarium.se
