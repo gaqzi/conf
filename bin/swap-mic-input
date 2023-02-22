@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if ! which -s SwitchAudioSource; then
+    echo "SwitchAudioSource not installed. Install by running: brew install switchaudio-osx" >&2
+    exit 1
+fi
+
+SwitchAudioSource -t input -s "MacBook Pro Microphone" && \
+	exec set-preferred-audio-input-source
