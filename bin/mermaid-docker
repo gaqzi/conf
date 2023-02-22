@@ -9,5 +9,11 @@ if [ -z "${INPUT}" ]; then
   echo "where args are passed to the mermaid CLI" >&2
 fi
 
+args="$@"
+if [ -z "${args}" ]; then
+  OUTPUT="$(echo "$INPUT" | cut -f1 -d.).png"
+  args="-o /data/${OUTPUT} -H 1024 -w 2048"
+fi
+
 set -x
-docker run -it -v $(pwd):/data minlag/mermaid-cli -i "/data/${INPUT}" $@
+docker run -it -v $(pwd):/data minlag/mermaid-cli -i "/data/${INPUT}" $args
