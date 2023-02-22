@@ -19,6 +19,7 @@ PREFERRED_SOURCES=(
     "isolation tank" # airpods max
     "icepicks"       # airpods pro
     "Built-in Microphone"
+    "MacBook Pro Microphone"
 )
 
 all_sources=$(SwitchAudioSource -t input -a)
