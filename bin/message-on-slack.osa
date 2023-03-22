@@ -1,0 +1,19 @@
+#!/usr/bin/env osascript
+
+-- Depends on https://github.com/samknight/slack_applescript being installed per instructions.
+-- On the first run it will fail and permissions will have to be granted.
+
+on run argv
+	if count of argv < 2 then tell me to error "Usage: message-on-slack.osa <recipient> <message> -- not enough arguments"
+
+	set slack_recipient to item 1 of argv
+	set slack_message to item 2 of argv
+
+	if slack_recipient = "" or slack_message = "" then
+		tell me to error "Usage: message-on-slack.osa <recipient> <message> -- empty value for recipient/message or both"
+	end if 
+
+	tell script "Slack"
+		send message slack_message in channel slack_recipient
+	end tell
+end run 
