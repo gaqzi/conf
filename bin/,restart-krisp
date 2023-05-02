@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Seems I can't force quit using AppleScript so old timey CLI stuff it is
+ps x | grep -i /Applications/krisp.app/Contents/MacOS/krisp | grep -v 'grep' | awk '{print $1}' | xargs kill -9
+
+# Maybe I should just run the above but I know this will for sure open it the mac way fully so...
+osascript -e 'tell application "Krisp" to run'
