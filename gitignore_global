@@ -27,3 +27,6 @@ htmlcov
 # Terraform
 .terraform/
 terraform.tfstate.d/
+
+# Javascript
+.parcel-cache/
