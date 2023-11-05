@@ -30,3 +30,6 @@ terraform.tfstate.d/
 
 # Javascript
 .parcel-cache/
+
+# To allow for scratchfiles anywhere, stuff I'm trying out, todos, etc.
+scratch.*
