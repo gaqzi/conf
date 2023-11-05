@@ -47,9 +47,9 @@ cask 'spotify'
 cask 'steam'
 cask 'telegram'
 cask 'the-unarchiver'
-cask 'tweetbot'
 cask 'vagrant'
 cask 'vmware-fusion'
 
 mas 'Keynote', id: 409183694
 mas 'Xcode', id: 497799835
+mas 'Ivory', id: 6444602274
