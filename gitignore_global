@@ -9,6 +9,7 @@ __pycache__
 *.egg-info
 .eggs
 .hypothesis
+.ipynb_checkpoints/
 
 .DS_Store
 .sass-cache
