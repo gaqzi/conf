@@ -1,14 +1,14 @@
 tap 'railwaycat/emacsmacport'
 tap 'thoughtbot/formulae'
-tap 'homebrew/cask-fonts'
 
 brew 'aria2'
 brew 'autojump'
 brew 'bat'
 brew 'coreutils'
-brew 'emacs-mac', modules: true
-brew 'fish'
+brew 'emacs'
 brew 'fd'
+brew 'fish'
+brew 'font-sauce-code-pro-nerd-font'
 brew 'gh'
 brew 'grep'
 brew 'grex'
@@ -18,6 +18,7 @@ brew 'lsd'
 brew 'marked'  # markdown compiler
 brew 'mpv'
 brew 'neovim'
+brew 'php'  # for Alfred workflows
 brew 'ripgrep'
 brew 'rcm'
 brew 'shellcheck'
@@ -28,9 +29,9 @@ brew 'wget'
 
 cask 'alfred'
 cask 'anki'
-cask 'istat-menus'
+cask 'istat-menus@6'
 cask 'dropbox'
-cask 'homebrew/cask-fonts/font-source-code-pro-for-powerline'
+cask 'font-source-code-pro-for-powerline'
 cask 'gitup'
 cask 'google-chrome'
 cask 'imagealpha'
@@ -43,13 +44,14 @@ cask 'muzzle'
 cask 'pastebot'
 cask 'qbittorrent'
 cask 'rectangle'
-cask 'skitch'
 cask 'slack'
 cask 'spotify'
 cask 'steam'
 cask 'telegram'
 cask 'the-unarchiver'
 
-mas 'Keynote', id: 409183694
-mas 'Xcode', id: 497799835
+mas '1Password for Safari', id: 1569813296
 mas 'Ivory', id: 6444602274
+mas 'Keynote', id: 409183694
+mas 'Toothfairy', id: 1191449274
+mas 'Xcode', id: 497799835
