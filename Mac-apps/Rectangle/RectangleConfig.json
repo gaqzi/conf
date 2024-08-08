@@ -154,6 +154,9 @@
     "screenEdgeGapTop" : {
       "float" : 0
     },
+    "screenEdgeGapTopNotch" : {
+      "float" : 0
+    },
     "shortEdgeSnapAreaSize" : {
       "float" : 145
     },
@@ -297,5 +300,5 @@
       "modifierFlags" : 786432
     }
   },
-  "version" : "85"
+  "version" : "86"
 }
