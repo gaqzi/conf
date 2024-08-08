@@ -2,6 +2,7 @@ tap 'railwaycat/emacsmacport'
 tap 'thoughtbot/formulae'
 
 brew 'aria2'
+brew 'asdf'
 brew 'autojump'
 brew 'bat'
 brew 'coreutils'
