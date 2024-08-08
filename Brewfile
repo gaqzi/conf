@@ -23,6 +23,7 @@ brew 'rcm'
 brew 'shellcheck'
 brew 'switchaudio-osx'
 brew 'tarsnap'
+brew 'trash'
 brew 'tree'
 brew 'wget'
 
