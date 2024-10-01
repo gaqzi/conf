@@ -1,4 +1,4 @@
-" Björn Anderssons .vimrc file
+" BjÃ¶rn Andersson's .vimrc file
 "
 " convert all files to unix format and set default fileformat to unix
 set ffs=unix
@@ -45,8 +45,10 @@ set formatoptions=crq
 " syntax highlighting... colors... feels like christmas
 syntax on
 " show/list special characters (tabs in this case)
-"set lcs=tab:».
-set lcs=tab:».,trail:·
+"set lcs=tab:Â».
+"set lcs=tab:Â».,trail:Â·,extends:>,precedes:<,nbsp:+
+"set lcs=tab:>-,trail:Â·,nbsp:_
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 " set our tabs to 4 spaces
 set tabstop=4
