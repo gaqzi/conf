@@ -1,0 +1,16 @@
+#!/bin/bash
+# A helper to create a PR for the current branch (or creating a new branch if on default)
+# and then set it to merge when checks passes, for repos where the rule is that it always
+# have to go through the pipeline before it can go into default.
+DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -d/ -f2)
+CURRENT_BRANCH=$(git branch --show-current)
+
+if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
+	echo "On default branch, will create a new branch based on the latest commit"
+	NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z]/-/g')
+	git switch -c $NEW_BRANCH || exit $?
+fi
+
+git push && \
+	gh pr create --base "$DEFAULT_BRANCH" --fill-verbose && \
+	gh pr merge --rebase --auto
