@@ -46,3 +46,6 @@
 	defaultBranch = main
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+# Custom config (primarily the email address) for repos from an org
+#[includeIf "hasconfig:remote.*.url:git@github.com:org/**"]
+#	path = ~/.gitconfig.org
