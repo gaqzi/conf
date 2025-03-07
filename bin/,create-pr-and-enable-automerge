@@ -16,7 +16,7 @@ set +e
 
 if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
 	echo "On default branch, will create a new branch based on the latest commit"
-	NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z]/-/g')
+	NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
 	git switch -c $NEW_BRANCH || exit $?
 fi
 
