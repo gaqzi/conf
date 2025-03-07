@@ -30,6 +30,7 @@ brew 'wget'
 
 cask 'alfred'
 cask 'anki'
+cask 'bartender'
 cask 'istat-menus@6'
 cask 'dropbox'
 cask 'font-sauce-code-pro-nerd-font'
