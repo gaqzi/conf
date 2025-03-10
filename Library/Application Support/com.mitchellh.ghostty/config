@@ -1,5 +1,6 @@
 theme = zenburned
 font-family = Source Code Pro for Powerline
 cursor-style-blink = false
+copy-on-select = clipboard
 
 macos-titlebar-style = tabs
