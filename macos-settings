@@ -2,8 +2,5 @@
 # The goal of this script is to configure all the things I do whenever I setup a new mac through 
 # NOTE: many of these settings won't immediately take effect unless you reboot
 
-# Reduce the space used between each icon in the menu bar at the top of the screen
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
-
 # Always show the scrollbar so I don't have to guess which areas are scrollable on websites
 defaults -currentHost write -globalDomain AppleShowScrollBars -string Always
