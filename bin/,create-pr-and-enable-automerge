@@ -15,11 +15,11 @@ CURRENT_BRANCH=$(git branch --show-current)
 set +e
 
 if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
-	echo "On default branch, will create a new branch based on the latest commit"
-	NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
-	git switch -c $NEW_BRANCH || exit $?
+    echo "On default branch, will create a new branch based on the latest commit"
+    NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
+    git switch -c $NEW_BRANCH || exit $?
 fi
 
 git push && \
-	gh pr create --base "$DEFAULT_BRANCH" --fill-verbose && \
-	gh pr merge --rebase --auto
+    gh pr create --base "$DEFAULT_BRANCH" --fill-verbose && \
+    gh pr merge --rebase --auto
