@@ -2,6 +2,7 @@
 # A helper to create a PR for the current branch (or creating a new branch if on default)
 # and then set it to merge when checks passes, for repos where the rule is that it always
 # have to go through the pipeline before it can go into default.
+# Any arguments on the command line are assumed to be labels and they will be set on the PR
 
 # To debug "fatal: ambiguous argument 'origin/HEAD': unknown revision or path not in the working tree." 
 # it likely means you don't have origin/HEAD configured, not sure why, but to fix run:
@@ -14,6 +15,15 @@ DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -d/ -f2)
 CURRENT_BRANCH=$(git branch --show-current)
 set +e
 
+# Standard labels in my GitHub projects: bug, chore, enhancement
+LABEL_ARGS=""
+if [ "$#" -gt 0 ]; then
+  echo "Adding labels from command-line arguments: $@"
+  for arg in "$@"; do
+    LABEL_ARGS="$LABEL_ARGS --label \"$arg\""
+  done
+fi
+
 if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
     echo "On default branch, will create a new branch based on the latest commit"
     NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
@@ -21,5 +31,9 @@ if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
 fi
 
 git push && \
-    gh pr create --base "$DEFAULT_BRANCH" --fill-verbose && \
+    gh pr create --base "$DEFAULT_BRANCH" --fill-verbose $LABEL_ARGS && \
     gh pr merge --rebase --auto
+
+if [ -n "$LABEL_ARGS" ]; then
+    echo "Attached the following labels to the PR: $@"
+fi
