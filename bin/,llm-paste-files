@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+import sys
+import re
+import os
+
+# Regular expression to match the filename marker line
+# It captures the filename part after "//FILENAME="
+FILENAME_PATTERN = re.compile(r'^// ?FILENAME=(.*)')
+
+def write_file(filename, content_lines):
+    """
+    Writes the collected list of content lines to the specified filename.
+    Creates the file if it doesn't exist, overwrites it if it does.
+    Prints status messages to stdout and errors to stderr.
+
+    Args:
+        filename (str | None): The name of the file to write to. If None, nothing is written.
+        content_lines (list[str]): A list of strings, where each string is a line of content
+                                   (including its original newline character).
+    """
+    if not filename:
+        if content_lines:
+             print("Warning: Skipping content block with no valid preceding filename.", file=sys.stderr)
+        return
+
+    try:
+        dir_name = os.path.dirname(filename)
+        if dir_name: # Only create if there's a directory part
+            os.makedirs(dir_name, exist_ok=True)
+    except OSError as e:
+        print(f"Error creating directory for {filename}: {e}", file=sys.stderr)
+        return
+
+    print(f"Attempting to write {filename} ({len(content_lines)} lines)...")
+    try:
+        with open(filename, 'w+') as f:
+            f.write("".join(content_lines))
+        print(f"Successfully wrote {filename}")
+    except IOError as e:
+        # Handle potential file system errors (permissions, etc.)
+        print(f"Error: Could not write file {filename}: {e}", file=sys.stderr)
+    except Exception as e:
+        # Catch any other unexpected errors during file writing
+        print(f"Error: An unexpected error occurred while writing {filename}: {e}", file=sys.stderr)
+
+def parse_and_write_files():
+    """
+    Reads the combined file format from stdin, parses filenames and content,
+    and writes them to disk.
+    """
+    current_filename = None
+    current_content_lines = []
+    first = True
+
+    for line in sys.stdin:
+        match = FILENAME_PATTERN.match(line)
+
+        if match:
+            if not first:
+                write_file(current_filename, current_content_lines)
+
+            first = False
+            current_filename = match.group(1).strip()
+            current_content_lines = []
+
+            if not current_filename:
+                print(f"Warning: Found marker with empty filename: {line.strip()}. Skipping subsequent content until next valid marker.", file=sys.stderr)
+                current_filename = None
+        elif current_filename is not None:
+            current_content_lines.append(line)
+        else:
+            print(f"Ignoring line before first filename marker: {line.strip()}", file=sys.stderr)
+            pass
+
+    write_file(current_filename, current_content_lines)
+
+if __name__ == "__main__":
+    parse_and_write_files()

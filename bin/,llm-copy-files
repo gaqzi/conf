@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check if at least one filename is provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <filename1> [<filename2> ...]"
+  exit 1
+fi
+
+for filename in "$@"
+do
+  # Check if the file exists and is readable
+  if [ -f "$filename" ] && [ -r "$filename" ]; then
+    echo "$filename content:"
+    echo '```'
+    cat "$filename" # Display file content
+    echo # Ensure a newline if the file doesn't end with one
+    echo '```'
+    echo # Add an extra newline for separation between files
+  else
+    echo "Error: Cannot read file '$filename'. Skipping." >&2
+    exit 1
+  fi
+done
