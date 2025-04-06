@@ -1,9 +1,12 @@
 #!/bin/bash
 
-: ${1:=main}
+TARGET=main
+if [ -n "$1" ]; then
+  TARGET="$1"
+fi
 
 set -x
 git rebase \
   -x "git-exec-on-changed -p .go$ HEAD~1 -- goimports -w" \
-  -x "git-exec-on-changed HEAD~1 -- go test" \
-  $1
+  -x "git-exec-on-changed HEAD~1 -- if [ -f script/test ]; then script/test ; else go test ; fi" \
+  $TARGET
