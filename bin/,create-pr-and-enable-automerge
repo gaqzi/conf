@@ -10,7 +10,26 @@
 # See:
 #   - https://stackoverflow.com/a/8840516  # for how to set the HEAD
 #   - https://stackoverflow.com/a/45096973 # for explanation for the error message
+
 set -e
+
+# Helper function to truncate text for display
+truncate_display() {
+    local text="$1"
+    if [ ${#text} -gt 47 ]; then
+        echo "${text:0:47}..."
+    else
+        echo "$text"
+    fi
+}
+
+# Check for gum dependency
+if ! command -v gum >/dev/null 2>&1; then
+    echo "Error: gum is required for interactive prompts"
+    echo "Install with: brew install gum"
+    exit 1
+fi
+
 DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -d/ -f2)
 CURRENT_BRANCH=$(git branch --show-current)
 set +e
@@ -26,12 +45,54 @@ fi
 
 if [ "$CURRENT_BRANCH" = "$DEFAULT_BRANCH" ]; then
     echo "On default branch, will create a new branch based on the latest commit"
-    NEW_BRANCH=$(git log -n1 --pretty="%s" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
-    git switch -c $NEW_BRANCH || exit $?
+    # We'll determine the branch name after we know the PR title
+    NEEDS_NEW_BRANCH=true
+else
+    NEEDS_NEW_BRANCH=false
 fi
 
+# Determine PR title based on commit count
+COMMIT_COUNT=$(git rev-list --count HEAD ^origin/$DEFAULT_BRANCH)
+PR_TITLE=""
+
+if [ "$COMMIT_COUNT" -gt 1 ]; then
+    # Multiple commits - offer interactive selection
+    FIRST_COMMIT=$(git log --reverse --oneline HEAD ^origin/$DEFAULT_BRANCH | head -n1 | cut -d' ' -f2-)
+    LATEST_COMMIT=$(git log -n1 --pretty="%s")
+    
+    FIRST_DISPLAY=$(truncate_display "$FIRST_COMMIT")
+    LATEST_DISPLAY=$(truncate_display "$LATEST_COMMIT")
+    
+    echo "Found $COMMIT_COUNT commits."
+    
+    CHOICE=$(gum input --width 50 --placeholder "1: $FIRST_DISPLAY | 2: $LATEST_DISPLAY | custom [default: 2]")
+    
+    case "$CHOICE" in
+        "" | "2")
+            PR_TITLE="$LATEST_COMMIT"
+            ;;
+        "1")
+            PR_TITLE="$FIRST_COMMIT"
+            ;;
+        *)
+            PR_TITLE="$CHOICE"
+            ;;
+    esac
+    
+    # Truncate final title if needed (safety net)
+    if [ ${#PR_TITLE} -gt 50 ]; then
+        PR_TITLE="${PR_TITLE:0:50}"
+    fi
+    
+    echo "Using title: $PR_TITLE"
+else
+    # Single commit - use existing behavior
+    PR_TITLE=$(git log -n1 --pretty="%s")
+fi
+
+# Push and create PR
 git push && \
-    gh pr create --base "$DEFAULT_BRANCH" --fill-verbose $LABEL_ARGS && \
+    gh pr create --base "$DEFAULT_BRANCH" --title "$PR_TITLE" --fill-verbose $LABEL_ARGS && \
     gh pr merge --rebase --auto
 
 if [ -n "$LABEL_ARGS" ]; then
