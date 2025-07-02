@@ -1,0 +1,4 @@
+#!/bin/bash -l -c claude
+# This scripts only exist because I use fish as a shell which claude code
+# doesn't work very well with, so by starting a bash login shell I get
+# the full experience I should.
