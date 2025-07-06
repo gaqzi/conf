@@ -90,6 +90,11 @@ else
     PR_TITLE=$(git log -n1 --pretty="%s")
 fi
 
+if [ "${NEEDS_NEW_BRANCH}" = true ]; then
+    NEW_BRANCH=$(echo "${PR_TITLE}" | tr A-Z a-z | sed -E 's/[^a-zA-Z0-9]/-/g' | sed -E 's/(-+)$//')
+    git switch -c $NEW_BRANCH || exit $?
+fi
+
 # Push and create PR
 git push && \
     gh pr create --base "$DEFAULT_BRANCH" --title "$PR_TITLE" --fill-verbose $LABEL_ARGS && \
