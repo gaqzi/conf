@@ -1,0 +1,41 @@
+#!/bin/bash
+
+VOLUME_FILE="$HOME/.mute-volume-level"
+
+get_volume() {
+    osascript -e 'input volume of (get volume settings)'
+}
+
+set_volume() {
+    osascript -e "set volume input volume $1"
+}
+
+restore_volume() {
+    # Read saved volume or default to 100
+    local saved_volume=100
+    if [[ -f "$VOLUME_FILE" ]]; then
+        local file_content=$(cat "$VOLUME_FILE" 2>/dev/null)
+        if [[ "$file_content" =~ ^[0-9]+$ ]]; then
+            saved_volume=$file_content
+        fi
+    fi
+    echo $saved_volume
+}
+
+main() {
+    local current=$(get_volume)
+    
+    if (( current <= 5 )); then
+        # Currently muted, unmute
+        local target=$(restore_volume)
+        set_volume $target
+        echo "❇️  (was ${current}%, restored to ${target}%)"
+    else
+        # Currently unmuted, mute
+        echo $current > "$VOLUME_FILE"
+        set_volume 0
+        echo "❌  (was ${current}%, muted)"
+    fi
+}
+
+main
