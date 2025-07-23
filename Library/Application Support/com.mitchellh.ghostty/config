@@ -4,3 +4,5 @@ cursor-style-blink = false
 copy-on-select = clipboard
 
 macos-titlebar-style = tabs
+# to make normal keybindings work
+macos-option-as-alt = true
