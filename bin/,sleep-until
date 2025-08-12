@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+#
+# sleep-until - Sleep until a specified time with a countdown display
+#
+# Usage: sleep-until [TIME]
+#
+# Parses natural language time expressions using GNU date and sleeps until
+# that time is reached, showing a spinner with gum. If TIME is not provided,
+# prompts interactively using gum input.
+#
+# Examples:
+#   sleep-until 'tomorrow 08:22'
+#   sleep-until '3:30pm'
+#   sleep-until 'next monday 9am'
+#   sleep-until 'in 2 hours'
+#
+# Requires: gum, GNU date (brew install coreutils on macOS)
+
+set -euo pipefail
+
+# Check for gum
+if ! command -v gum &>/dev/null; then
+    echo "Error: gum is required for interactive input and progress display" >&2
+    echo "Install it with: brew install gum" >&2
+    exit 1
+fi
+
+# Detect GNU date (gdate on macOS with coreutils, date on Linux)
+if command -v gdate &>/dev/null; then
+    DATE_CMD="gdate"
+elif date --version 2>&1 | grep -q 'GNU'; then
+    DATE_CMD="date"
+else
+    echo "Error: GNU date is required for natural language time parsing" >&2
+    echo "On macOS, install it with: brew install coreutils" >&2
+    exit 1
+fi
+
+if [[ -n "${1:-}" ]]; then
+    TARGET_TIME="$1"
+else
+    TARGET_TIME=$(gum input --placeholder "Enter target time (e.g., '15:30', 'tomorrow 8am', '2024-12-25 00:00')")
+fi
+
+if [[ -z "$TARGET_TIME" ]]; then
+    echo "Error: No time provided" >&2
+    exit 1
+fi
+
+TARGET_EPOCH=$($DATE_CMD -d "$TARGET_TIME" '+%s' 2>/dev/null) || {
+    echo "Error: Unable to parse time '$TARGET_TIME'" >&2
+    echo "Try formats like: '15:30', 'tomorrow 8am', '2024-12-25 00:00', 'in 2 hours'" >&2
+    exit 1
+}
+
+CURRENT_EPOCH=$($DATE_CMD '+%s')
+SECONDS_UNTIL=$((TARGET_EPOCH - CURRENT_EPOCH))
+
+if [[ $SECONDS_UNTIL -lt 0 ]]; then
+    echo "Error: Target time '$TARGET_TIME' is in the past (${SECONDS_UNTIL#-} seconds ago)" >&2
+    exit 1
+fi
+
+FORMATTED_TARGET=$($DATE_CMD -d "$TARGET_TIME" '+%Y-%m-%d %H:%M:%S' 2>/dev/null || echo "$TARGET_TIME")
+
+echo "Counting down until '$TARGET_TIME' ($SECONDS_UNTIL seconds)"
+
+if [[ $SECONDS_UNTIL -gt 0 ]]; then
+    gum spin --spinner dot --title "Sleeping until $FORMATTED_TARGET..." -- sleep "$SECONDS_UNTIL"
+fi
+
+exit 0
