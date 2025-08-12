@@ -63,10 +63,8 @@ fi
 
 FORMATTED_TARGET=$($DATE_CMD -d "$TARGET_TIME" '+%Y-%m-%d %H:%M:%S' 2>/dev/null || echo "$TARGET_TIME")
 
-echo "Counting down until '$TARGET_TIME' ($SECONDS_UNTIL seconds)"
-
 if [[ $SECONDS_UNTIL -gt 0 ]]; then
-    gum spin --spinner dot --title "Sleeping until $FORMATTED_TARGET..." -- sleep "$SECONDS_UNTIL"
+    gum spin --spinner dot --title "Sleeping until $FORMATTED_TARGET... ($SECONDS_UNTIL seconds)" -- sleep "$SECONDS_UNTIL"
 fi
 
 exit 0
