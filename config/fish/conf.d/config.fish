@@ -9,6 +9,6 @@ alias cat bat
 alias less bat
 alias ls lsd
 
-[ -f $HOME/.fishrc_local ]; and source $HOME/.fishrc_local
+[ -f $HOME/.local/fishrc ]; and source $HOME/.local/fishrc
 
-set -x PATH $HOME/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
