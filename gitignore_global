@@ -34,3 +34,7 @@ terraform.tfstate.d/
 
 # To allow for scratchfiles anywhere, stuff I'm trying out, todos, etc.
 scratch.*
+
+# LLMs
+.claude/  # Claude's local config, don't share between laptops as it's what's allowed to run etc.
+.playwright-mcp/
