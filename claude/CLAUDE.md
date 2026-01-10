@@ -1,2 +1,1 @@
 - ALWAYS use trailing newlines in files
-- NEVER co-author or mention Claude Code when making commits
