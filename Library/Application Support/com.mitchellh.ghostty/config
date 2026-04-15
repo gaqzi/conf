@@ -5,5 +5,5 @@ copy-on-select = clipboard
 
 macos-titlebar-style = tabs
 # to make normal keybindings work
-macos-option-as-alt = true
+macos-option-as-alt = left
 keybind = shift+enter=text:\x1b\r
