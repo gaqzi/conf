@@ -1,10 +1,6 @@
 " Pretty colors
-color desert
+colorscheme zenburn
 " Set tmp directory in home
 set directory=~/tmp
 " My old usual config for tab and trailing
 set lcs=tab:».,trail:·,extends:>,precedes:<,nbsp:+
-" Quit with a single keypress
-map q :q<CR>
-
-Bundle 'chase/vim-ansible-yaml'
