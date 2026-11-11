@@ -1,1 +1,2 @@
+- Answers follow the pyramid principle: lead with the conclusion or plan in one or two sentences, then the supporting detail. Never interleave high-level plan and detail
 - ALWAYS use trailing newlines in files
