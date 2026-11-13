@@ -17,6 +17,7 @@ set -x PATH $HOME/.local/bin $PATH
 # moves and deletes by word). When a Mac reaches this shell over rex, use
 # the Mac bindings so option-backspace behaves like it does locally.
 if status is-interactive; and test (uname) != Darwin; and set -q REX_SESSION
+    and command -q rex; and command -q jq
     and rex client ls --session $REX_SESSION --json 2>/dev/null | jq -e 'any(.clients[]; .info.platform == "macos")' >/dev/null
     bind alt-backspace backward-kill-word
     bind ctrl-alt-h backward-kill-word
